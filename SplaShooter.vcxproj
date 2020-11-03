@@ -146,6 +146,7 @@
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Bg.cpp" />
     <ClCompile Include="DirectX11.cpp" />
+    <ClCompile Include="Fps.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Bg.h" />
     <ClInclude Include="DirectX11.h" />
+    <ClInclude Include="Fps.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="Manager.h" />
