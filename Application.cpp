@@ -57,7 +57,7 @@ void Fps::Reset()
 #pragma endregion Fpsクラスの関数
 
 #pragma region Application_Func
-// コールバック関数
+// ウィンドウプロシージャ
 LRESULT WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg)
@@ -81,23 +81,24 @@ LRESULT WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
-void Application::CreateGameWindow(HWND & hwnd, WNDCLASSEX & windowclass)
+void Application::CreateGameWindow(HWND & hwnd, WNDCLASSEX & windowClass)
 {
-	HINSTANCE hinstance = GetModuleHandle(NULL);
+	HINSTANCE hInstance = GetModuleHandle(NULL);
 	// ウィンドウの生成＆登録
-	windowclass.cbSize = sizeof(WNDCLASSEX);
-	windowclass.lpfnWndProc = (WNDPROC)WndProc; // コールバック関数の指定
-	windowclass.lpszClassName = "SplaShooter";  // アプリケーション名
-	windowclass.hInstance = GetModuleHandle(0); // ハンドルの指定
-	RECT wrc = { 0.0f, 0.0f, m_Width, m_Height };
+	windowClass.cbSize = sizeof(WNDCLASSEX);
+	windowClass.lpfnWndProc = (WNDPROC)WndProc; // コールバック関数の指定
+	windowClass.lpszClassName = "Dx11";			// アプリケーション名
+	windowClass.hInstance = GetModuleHandle(0);	// ハンドルの指定
+	RegisterClassEx(&windowClass);				// アプリケーションクラス
+	RECT wrc = { 0,0,m_Width, m_Height };
 	AdjustWindowRect(&wrc, WS_OVERLAPPEDWINDOW, false);
 	// ウィンドウオブジェクトの生成
-	hwnd = CreateWindow(windowclass.lpszClassName,	// クラス名
-		"ゲームアプリ",								// タイトルバー　 
+	hwnd = CreateWindow(windowClass.lpszClassName,	// クラス名
+		"ゲームアプリ",								// タイトルバー
 		WS_OVERLAPPEDWINDOW,						// ウィンドウタイプ
 		CW_USEDEFAULT, CW_USEDEFAULT,				// 表示xy座標はOSに任せる
 		wrc.right - wrc.left, wrc.bottom - wrc.top, // ウィンドウ幅と高さ
-		NULL, NULL, windowclass.hInstance, NULL);	// ウィンドウハンドル、メニューハンドル、呼び出しアプリケーションハンドル、追加パラメータ
+		NULL, NULL, windowClass.hInstance, NULL);	// ウィンドウハンドル, メニューハンドル,呼び出しアプリケーションハンドル, 追加パラメータ
 }
 
 Application & Application::Instance()
@@ -106,11 +107,11 @@ Application & Application::Instance()
 	return instance;
 }
 
-bool Application::Init(HINSTANCE hinstance)
+bool Application::Init(HINSTANCE hInstance)
 {
 	auto result = CoInitializeEx(0, COINITBASE_MULTITHREADED);
-	CreateGameWindow(m_hwnd, m_WindowClass);
-	InputDevice::Init(hinstance, m_hwnd);
+	CreateGameWindow(m_hwnd, m_WindowClass); // ゲームウィンドウ
+	InputDevice::Init(hInstance, m_hwnd);	 // コントローラの初期化
 	return true;
 }
 
@@ -119,10 +120,11 @@ void Application::AppRun()
 	// ウィンドウ表示
 	ShowWindow(m_hwnd, SW_SHOW);
 	UpdateWindow(m_hwnd);
-
-	// Fpsの初期化
+	
+	// フレームレートの初期化
 	Fps& fps = Fps::Instance();
 	fps.Init();
+	//Manager::Init();
 
 	// メッセージループ
 	MSG msg;
@@ -130,26 +132,34 @@ void Application::AppRun()
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
-			if (msg.message = WM_QUIT)
+			if (msg.message == WM_QUIT) // PostQuitMessage()が呼ばれたらループ終了
 			{
 				break;
 			}
 			else
 			{
+				// メッセージの翻訳とディスパッチ
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
 		}
 		else
 		{
-			if (fps.Update())
+			if(fps.Update())
 			{
-				InputDevice::Update;
+				// 更新処理
+				InputDevice::Update(); // コントローラの更新
+				//Manager::Update();
+				// 描画処理
+				//Manager::Draw();
 			}
-		}			   	
+		}
 	}
+
+//	Manager::Uninit();
 	fps.Uninit();
-	InputDevice::Uninit();
+	InputDevice::Uninit();  // コントローラの終了処理 
+	timeEndPeriod(1);		// 分解能を戻す
 	UnregisterClass(m_WindowClass.lpszClassName, m_WindowClass.hInstance); // ウィンドウクラスの登録を解除
 }
 
