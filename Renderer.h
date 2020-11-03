@@ -46,10 +46,11 @@ class SpriteRenderer
 {
 private:
 	unsigned int m_Storage;
-	Wrapper::DirectX11& m_dx = Wrapper::DirectX11::Instance();
+	Wrapper::DirectX11& m_dx;
 	Sprite2D::Texture m_Texture;
 	Sprite2D::Sprite m_Sprite;
 public:
+	SpriteRenderer() : m_dx(Wrapper::DirectX11::Instance()) {};
 	void Load(const char* Filename);
 	void Unload();
 	void Draw(D3DXVECTOR2 drawPosition, D3DXVECTOR2 drawSize, D3DXVECTOR2 texUpLeft, D3DXVECTOR2 texDownRight, D3DXCOLOR color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));

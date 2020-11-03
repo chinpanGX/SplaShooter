@@ -144,18 +144,24 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="Bg.cpp" />
     <ClCompile Include="DirectX11.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Audio.h" />
+    <ClInclude Include="Bg.h" />
     <ClInclude Include="DirectX11.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputDevice.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="pixelShader.cso" />

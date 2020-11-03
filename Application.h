@@ -38,8 +38,11 @@ class Application
 private:
 	WNDCLASSEX	m_WindowClass;
 	HWND m_hwnd;
-	const unsigned int m_Width = 1200;
-	const unsigned int m_Height = 720;
+	// ウィンドウサイズ
+	const unsigned int m_Width = 1920;
+	const unsigned int m_Height = 1080;
+	// ウィンドウモード true->WindowScrren false->FullScrren
+	bool m_WindowMode = false; 
 
 	// ゲーム用ウィンドウ作成
 	void CreateGameWindow(HWND& hwnd, WNDCLASSEX& windowclass); 
