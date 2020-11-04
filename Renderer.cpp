@@ -165,4 +165,4 @@ void SpriteRenderer::SetAlpha(float alpha)
 {
 	m_Sprite.SetAlpha(alpha);
 }
-#pragma endregion SpriteRenderer
+#pragma endregion SpriteRendererƒNƒ‰ƒX‚ÌŠÖ”’è‹`

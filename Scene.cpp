@@ -10,12 +10,39 @@
 #include "InputDevice.h"
 #include "Manager.h"
 
+// タイトルシーン
+#pragma region GameScene_Title_Func
+void GameScene::Title::Init()
+{
+	AddGameObject<DrawBg::Title>(LAYER_2D_BG);
+}
+
+void GameScene::Title::Uninit()
+{
+
+}
+
+void GameScene::Title::Update()
+{
+	Scene::Update();
+	if (KeyBoard::IsTrigger(DIK_T) || GamePad::IsTrigger(0, BTN_2))
+	{
+		Manager::SetScene<Game>();
+	}
+}
+
+void GameScene::Title::Draw()
+{
+	Scene::Draw();
+}
+#pragma endregion Titleのクラスの関数定義
+
 // ゲームシーン
 #pragma region GameScene_Game_Func
 // 初期化
 void GameScene::Game::Init()
 {
-	AddGameObject<DrawBg::Game>(LAYER_2D);
+	AddGameObject<DrawBg::Game>(LAYER_2D_BG);
 }
 
 void GameScene::Game::Uninit()
@@ -40,29 +67,3 @@ void GameScene::Game::Draw()
 }
 #pragma endregion Gameクラスの関数定義
 
-// タイトルシーン
-#pragma region GameScene_Title_Func
-void GameScene::Title::Init()
-{
-	AddGameObject<DrawBg::Title>(LAYER_2D);
-}
-
-void GameScene::Title::Uninit()
-{
-
-}
-
-void GameScene::Title::Update()
-{
-	Scene::Update();
-	if (KeyBoard::IsTrigger(DIK_T) || GamePad::IsTrigger(0, BTN_2))
-	{
-		Manager::SetScene<Game>();
-	}
-}
-
-void GameScene::Title::Draw()
-{
-	Scene::Draw();
-}
-#pragma endregion Titleのクラスの関数定義

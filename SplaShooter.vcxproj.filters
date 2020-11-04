@@ -13,77 +13,130 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ヘッダー ファイル\System">
+      <UniqueIdentifier>{3adb2185-dc24-4c6c-8333-d1ec40ac88dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System">
+      <UniqueIdentifier>{471058cc-d8a4-4579-bdd6-fb8e7b34e8d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game">
+      <UniqueIdentifier>{f4d8a2bf-55ae-443e-ae5c-624e54249c18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Scene">
+      <UniqueIdentifier>{e836a29f-5ae7-485b-ab9e-fa3ee8c218f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\2D">
+      <UniqueIdentifier>{9a68bdcf-c037-436c-89ff-380fccae7e5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game">
+      <UniqueIdentifier>{77a81569-a693-48a1-bbc2-5a098cf4b0d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Scene">
+      <UniqueIdentifier>{9fddf0a2-2ed1-4139-a751-98a1b2277b1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\2D">
+      <UniqueIdentifier>{252e6c1d-04ab-455d-bc11-5af0ae716278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Sound">
+      <UniqueIdentifier>{05290011-5330-40e2-adc7-71ff58560899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Base">
+      <UniqueIdentifier>{e00a44f8-c403-4e92-ae3f-84df744c6f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Sound">
+      <UniqueIdentifier>{a9616b8d-2afb-4c70-988c-d31d5f34b539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Shader">
+      <UniqueIdentifier>{7cc5f100-a340-47a2-9ffd-0b206275df2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Shader\Pixel">
+      <UniqueIdentifier>{f786bcb8-a166-4cbc-bf7d-25b5f1923c98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Shader\Vertex">
+      <UniqueIdentifier>{91964144-4316-413d-89f3-fd76e7b9dd26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Application.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Audio.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\System</Filter>
     </ClCompile>
     <ClCompile Include="DirectX11.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="InputDevice.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Bg.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\System</Filter>
     </ClCompile>
     <ClCompile Include="Fps.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDevice.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Bg.cpp">
+      <Filter>ソース ファイル\Game\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>ソース ファイル\Game\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>ソース ファイル\Game\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
     <ClInclude Include="DirectX11.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="InputDevice.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Bg.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
     <ClInclude Include="Fps.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDevice.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>ヘッダー ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>ヘッダー ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Bg.h">
+      <Filter>ヘッダー ファイル\Game\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>ヘッダー ファイル\Game\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>ヘッダー ファイル\Game\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>ヘッダー ファイル\Game\Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="pixelShader.cso" />
-    <None Include="vertexShader.cso" />
+    <None Include="pixelShader.cso">
+      <Filter>リソース ファイル\Shader\Pixel</Filter>
+    </None>
+    <None Include="vertexShader.cso">
+      <Filter>リソース ファイル\Shader\Vertex</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="pixelShader.hlsl" />
-    <FxCompile Include="vertexShader.hlsl" />
+    <FxCompile Include="pixelShader.hlsl">
+      <Filter>リソース ファイル\Shader\Pixel</Filter>
+    </FxCompile>
+    <FxCompile Include="vertexShader.hlsl">
+      <Filter>リソース ファイル\Shader\Vertex</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ToDoList.txt" />
   </ItemGroup>
 </Project>

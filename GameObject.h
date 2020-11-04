@@ -55,6 +55,8 @@ public:
 	void SetPosition(D3DXVECTOR3 Position) { m_Position = Position; }
 	void SetRotation(D3DXVECTOR3 Rotation) { m_Rotation = Rotation; }
 	void SetScale(D3DXVECTOR3 Scale) { m_Scale = Scale; }
+	
+	// 前方向ベクトルを返す
 	D3DXVECTOR3 GetForward()
 	{
 		D3DXMATRIX rot;
@@ -66,6 +68,8 @@ public:
 		forward.z = rot._33;
 		return forward;
 	}
+
+	// 指定した方向ベクトルを返す
 	D3DXVECTOR3 GetVector(VECTOR v)
 	{
 		D3DXMATRIX rot;
@@ -73,20 +77,21 @@ public:
 		D3DXVECTOR3 vector;
 		switch (v)
 		{
+		// 左右
 		case 0:
 		case 1:
 			vector.x = rot._11;
 			vector.y = rot._12;
 			vector.z = rot._13;
 			break;
-
+		// 上下
 		case 2:
 		case 3:
 			vector.x = rot._21;
 			vector.y = rot._22;
 			vector.z = rot._23;
 			break;
-
+		// 前後
 		case 4:
 		case 5:
 			vector.x = rot._31;

@@ -12,12 +12,14 @@
 #include <string>
 #include "GameObject.h"
 
-// レイヤーの列挙
+// レイヤーの列挙　-> 更新、描画の順番に宣言
 enum layer : int
 {
 	LAYER_CAMERA,
-	LAYER_2D,
 	LAYER_3D,
+	LAYER_2D_BG,		// 背景
+	LAYER_2D_EFFECT,	// エフェクト（ビルボードなど）
+	LAYER_2D_UI,		// UI
 	LAYER_MAX
 };
 
@@ -52,6 +54,18 @@ public:
 			object->Update();
 		}
 		for (GameObject* object : m_GameObject[LAYER_3D])
+		{
+			object->Update();
+		}
+		for (GameObject* object : m_GameObject[LAYER_2D_BG])
+		{
+			object->Update();
+		}
+		for (GameObject* object : m_GameObject[LAYER_2D_EFFECT])
+		{
+			object->Update();
+		}
+		for (GameObject* object : m_GameObject[LAYER_2D_UI])
 		{
 			object->Update();
 		}
@@ -115,18 +129,6 @@ public:
 // namespace→GameScene
 namespace GameScene
 {
-	// Gameクラス
-#pragma region class_Game-public_Scene
-	class Game : public Scene
-	{
-	public:
-		void Init()override;
-		void Uninit()override;
-		void Update()override;
-		void Draw()override;
-	};
-#pragma endregion Gameクラスの宣言
-
 	// Titleクラス
 #pragma region class_Title-public_Scene
 	class Title : public Scene
@@ -138,5 +140,17 @@ namespace GameScene
 		void Draw()override;
 	};
 #pragma endregion Titleクラスの宣言
+
+	// Gameクラス
+#pragma region class_Game-public_Scene
+	class Game : public Scene
+	{
+	public:
+		void Init()override;
+		void Uninit()override;
+		void Update()override;
+		void Draw()override;
+	};
+#pragma endregion Gameクラスの宣言
 };
 
