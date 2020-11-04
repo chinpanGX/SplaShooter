@@ -27,8 +27,6 @@ class Scene
 {
 protected:
 	std::list<GameObject*> m_GameObject[LAYER_MAX];
-	virtual void Load() = 0;	// ロード
-	virtual void Unload() = 0;	// アンロード
 public:
 	Scene() {}
 	virtual ~Scene() {}
@@ -45,7 +43,6 @@ public:
 			}
 			m_GameObject[i].clear();
 		}
-		Unload();
 	}
 	// 更新処理
 	virtual void Update()
@@ -122,9 +119,6 @@ namespace GameScene
 #pragma region class_Game-public_Scene
 	class Game : public Scene
 	{
-	private:
-		void Load()override;
-		void Unload()override;
 	public:
 		void Init()override;
 		void Uninit()override;
@@ -137,9 +131,6 @@ namespace GameScene
 #pragma region class_Title-public_Scene
 	class Title : public Scene
 	{
-	private:
-		void Load()override;
-		void Unload()override;
 	public:
 		void Init()override;
 		void Uninit()override;

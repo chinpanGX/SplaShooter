@@ -11,18 +11,7 @@
 #include "Manager.h"
 
 // ゲームシーン
-#pragma region Game_Func
-// ロード
-void GameScene::Game::Load()
-{
-
-}
-
-// アンロード
-void GameScene::Game::Unload()
-{
-}
-
+#pragma region GameScene_Game_Func
 // 初期化
 void GameScene::Game::Init()
 {
@@ -52,15 +41,7 @@ void GameScene::Game::Draw()
 #pragma endregion Gameクラスの関数定義
 
 // タイトルシーン
-#pragma region Title_Func
-void GameScene::Title::Load()
-{
-}
-
-void GameScene::Title::Unload()
-{
-}
-
+#pragma region GameScene_Title_Func
 void GameScene::Title::Init()
 {
 	AddGameObject<DrawBg::Title>(LAYER_2D);
