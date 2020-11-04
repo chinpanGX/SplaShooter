@@ -61,6 +61,7 @@ namespace DrawBg
 		void Update()override;
 		void Draw()override;
 	};
+
 	// ƒQ[ƒ€”wŒi
 	class Game : public Bg
 	{
