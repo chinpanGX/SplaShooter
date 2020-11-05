@@ -30,6 +30,10 @@ void GameScene::Title::Update()
 	{
 		Manager::SetScene<Game>();
 	}
+	if (KeyBoard::IsTrigger(DIK_R))
+	{
+		Manager::SetScene<Test>();
+	}
 }
 
 void GameScene::Title::Draw()
@@ -69,3 +73,25 @@ void GameScene::Game::Draw()
 }
 #pragma endregion GameƒNƒ‰ƒX‚ÌŠÖ”’è‹`
 
+void GameScene::Test::Init()
+{
+
+}
+
+void GameScene::Test::Uninit()
+{
+
+}
+
+void GameScene::Test::Update()
+{
+	if (KeyBoard::IsTrigger(DIK_T))
+	{
+		Manager::SetScene<Title>();
+	}
+}
+
+void GameScene::Test::Draw()
+{
+
+}

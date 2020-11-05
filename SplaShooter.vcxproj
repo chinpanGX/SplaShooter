@@ -147,6 +147,7 @@
     <ClCompile Include="Bg.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DirectX11.cpp" />
+    <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Fps.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="main.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Bg.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DirectX11.h" />
+    <ClInclude Include="Effect.h" />
     <ClInclude Include="Fps.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputDevice.h" />

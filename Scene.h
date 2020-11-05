@@ -152,5 +152,17 @@ namespace GameScene
 		void Draw()override;
 	};
 #pragma endregion Gameクラスの宣言
+
+	// Test用のシーン
+#pragma region class_Test
+	class Test : public Scene
+	{
+	public:
+		void Init()override;
+		void Uninit()override;
+		void Update()override;
+		void Draw()override;
+	};
+#pragma endregion Testクラスの宣言
 };
 
