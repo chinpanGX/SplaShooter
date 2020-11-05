@@ -113,9 +113,6 @@ namespace Wrapper
 		IDXGISwapChain*				m_SwapChain = NULL;
 		ID3D11RenderTargetView*		m_RenderTargetView = NULL;
 		ID3D11DepthStencilView*		m_DepthStencilView = NULL;
-		ID3D11VertexShader*			m_VertexShader = NULL;
-		ID3D11PixelShader*			m_PixelShader = NULL;
-		ID3D11InputLayout*			m_VertexLayout = NULL;
 		ID3D11Buffer*				m_WorldBuffer = NULL;
 		ID3D11Buffer*				m_ViewBuffer = NULL;
 		ID3D11Buffer*				m_ProjectionBuffer = NULL;
@@ -123,10 +120,6 @@ namespace Wrapper
 		ID3D11Buffer*				m_LightBuffer = NULL;
 		ID3D11DepthStencilState*	m_DepthStateEnable = NULL;
 		ID3D11DepthStencilState*	m_DepthStateDisable = NULL;
-
-		// シェーダーの生成
-		void CompileVertexShader();
-		void CompilePixelShader();
 
 		// privateコンストラクタ
 		DirectX11() {}
@@ -146,7 +139,6 @@ namespace Wrapper
 		void SetProjectionMatrix(D3DXMATRIX * ProjectionMatrix);
 		void SetMaterial(MATERIAL Material);
 		void SetLight(LIGHT Light);
-
 		ID3D11Device* GetDevice() { return m_Device; }
 		ID3D11DeviceContext* GetDeviceContext() { return m_ImmediateContext; }
 	};

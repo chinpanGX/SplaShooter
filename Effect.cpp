@@ -16,6 +16,7 @@ void Effect::Water::Init()
 	m_Parameter.m_Distortion = 5.0f;
 	
 	// シェーダー生成->コンパイル用の関数があれば楽になる？
+
 }
 
 void Effect::Water::Uninit()

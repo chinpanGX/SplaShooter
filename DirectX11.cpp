@@ -8,57 +8,6 @@
 #include "Application.h"
 #include <io.h>
 
-// シェーダーの生成
-void Wrapper::DirectX11::CompileVertexShader()
-{
-	// 頂点シェーダ生成
-	{
-		FILE* file;
-		long int fsize;
-
-		file = fopen("vertexShader.cso", "rb");
-		fsize = _filelength(_fileno(file));
-		unsigned char* buffer = new unsigned char[fsize];
-		fread(buffer, fsize, 1, file);
-		fclose(file);
-
-		m_Device->CreateVertexShader(buffer, fsize, NULL, &m_VertexShader);
-
-		// 入力レイアウト生成
-		D3D11_INPUT_ELEMENT_DESC layout[] =
-		{
-			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 4 * 3, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "COLOR",    0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 4 * 6, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 4 * 10, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-		};
-		UINT numElements = ARRAYSIZE(layout);
-
-		m_Device->CreateInputLayout(layout, numElements, buffer, fsize, &m_VertexLayout);
-
-		delete[] buffer;
-	}
-}
-
-void Wrapper::DirectX11::CompilePixelShader()
-{
-	// ピクセルシェーダ生成
-	{
-		FILE* file;
-		long int fsize;
-
-		file = fopen("pixelShader.cso", "rb");
-		fsize = _filelength(_fileno(file));
-		unsigned char* buffer = new unsigned char[fsize];
-		fread(buffer, fsize, 1, file);
-		fclose(file);
-
-		m_Device->CreatePixelShader(buffer, fsize, NULL, &m_PixelShader);
-
-		delete[] buffer;
-	}
-}
-
 // インスタンス生成
 Wrapper::DirectX11& Wrapper::DirectX11::Instance()
 {
@@ -191,10 +140,6 @@ void Wrapper::DirectX11::Init()
 	ID3D11SamplerState* samplerState = NULL;
 	m_Device->CreateSamplerState(&samplerDesc, &samplerState);
 	m_ImmediateContext->PSSetSamplers(0, 1, &samplerState);
-
-	// シェーダーの生成
-	CompileVertexShader();
-	CompilePixelShader();
 	
 	// 定数バッファ生成
 	D3D11_BUFFER_DESC hBufferDesc;
@@ -224,13 +169,6 @@ void Wrapper::DirectX11::Init()
 	m_Device->CreateBuffer(&hBufferDesc, NULL, &m_LightBuffer);
 	m_ImmediateContext->VSSetConstantBuffers(4, 1, &m_LightBuffer);
 
-	// 入力レイアウト設定
-	m_ImmediateContext->IASetInputLayout(m_VertexLayout);
-
-	// シェーダ設定
-	m_ImmediateContext->VSSetShader(m_VertexShader, NULL, 0);
-	m_ImmediateContext->PSSetShader(m_PixelShader, NULL, 0);
-
 	// ライト無効化
 	LIGHT light;
 	light.Enable = false;
@@ -252,10 +190,6 @@ void Wrapper::DirectX11::Uninit()
 	m_ProjectionBuffer->Release();
 	m_LightBuffer->Release();
 	m_MaterialBuffer->Release();
-
-	m_VertexLayout->Release();
-	m_VertexShader->Release();
-	m_PixelShader->Release();
 
 	m_ImmediateContext->ClearState();
 	m_RenderTargetView->Release();

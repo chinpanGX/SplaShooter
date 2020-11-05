@@ -8,6 +8,7 @@
 #include <time.h>
 #include "Bg.h"
 #include "Scene.h"
+#include "TestPlayer.h"
 
 // スタティック変数
 Scene* Manager::m_Scene = NULL;

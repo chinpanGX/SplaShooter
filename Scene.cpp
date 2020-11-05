@@ -10,11 +10,14 @@
 #include "InputDevice.h"
 #include "Manager.h"
 #include "Camera.h"
+#include "TestPlayer.h"
+#include "SettingShader.h"
 
 // タイトルシーン
 #pragma region GameScene_Title_Func
 void GameScene::Title::Init()
 {
+	AddGameObject<SettingShader>(LAYER_3D);
 	AddGameObject<DrawBg::Title>(LAYER_2D_BG);
 }
 
@@ -49,6 +52,9 @@ void GameScene::Game::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
 	AddGameObject<DrawBg::Game>(LAYER_2D_BG);
+
+	// シェーダーテスト用
+	AddGameObject<TestPlayer>(LAYER_3D);
 }
 
 void GameScene::Game::Uninit()
