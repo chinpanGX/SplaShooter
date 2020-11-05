@@ -124,8 +124,14 @@ namespace Wrapper
 		ID3D11DepthStencilState*	m_DepthStateEnable = NULL;
 		ID3D11DepthStencilState*	m_DepthStateDisable = NULL;
 
+		// シェーダーの生成
+		void CompileVertexShader();
+		void CompilePixelShader();
+
+		// privateコンストラクタ
 		DirectX11() {}
 		// コピーと代入を禁止
+		DirectX11(const DirectX11&) = delete;
 		void operator= (const DirectX11&) = delete;
 	public:
 		static DirectX11& Instance();

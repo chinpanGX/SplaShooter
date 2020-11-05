@@ -8,6 +8,57 @@
 #include "Application.h"
 #include <io.h>
 
+// シェーダーの生成
+void Wrapper::DirectX11::CompileVertexShader()
+{
+	// 頂点シェーダ生成
+	{
+		FILE* file;
+		long int fsize;
+
+		file = fopen("vertexShader.cso", "rb");
+		fsize = _filelength(_fileno(file));
+		unsigned char* buffer = new unsigned char[fsize];
+		fread(buffer, fsize, 1, file);
+		fclose(file);
+
+		m_Device->CreateVertexShader(buffer, fsize, NULL, &m_VertexShader);
+
+		// 入力レイアウト生成
+		D3D11_INPUT_ELEMENT_DESC layout[] =
+		{
+			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			{ "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 4 * 3, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			{ "COLOR",    0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 4 * 6, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 4 * 10, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+		};
+		UINT numElements = ARRAYSIZE(layout);
+
+		m_Device->CreateInputLayout(layout, numElements, buffer, fsize, &m_VertexLayout);
+
+		delete[] buffer;
+	}
+}
+
+void Wrapper::DirectX11::CompilePixelShader()
+{
+	// ピクセルシェーダ生成
+	{
+		FILE* file;
+		long int fsize;
+
+		file = fopen("pixelShader.cso", "rb");
+		fsize = _filelength(_fileno(file));
+		unsigned char* buffer = new unsigned char[fsize];
+		fread(buffer, fsize, 1, file);
+		fclose(file);
+
+		m_Device->CreatePixelShader(buffer, fsize, NULL, &m_PixelShader);
+
+		delete[] buffer;
+	}
+}
+
 // インスタンス生成
 Wrapper::DirectX11& Wrapper::DirectX11::Instance()
 {
@@ -141,51 +192,10 @@ void Wrapper::DirectX11::Init()
 	m_Device->CreateSamplerState(&samplerDesc, &samplerState);
 	m_ImmediateContext->PSSetSamplers(0, 1, &samplerState);
 
-	// 頂点シェーダ生成
-	{
-		FILE* file;
-		long int fsize;
-
-		file = fopen("vertexShader.cso", "rb");
-		fsize = _filelength(_fileno(file));
-		unsigned char* buffer = new unsigned char[fsize];
-		fread(buffer, fsize, 1, file);
-		fclose(file);
-
-		m_Device->CreateVertexShader(buffer, fsize, NULL, &m_VertexShader);
-
-
-		// 入力レイアウト生成
-		D3D11_INPUT_ELEMENT_DESC layout[] =
-		{
-			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 4 * 3, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "COLOR",    0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 4 * 6, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 4 * 10, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-		};
-		UINT numElements = ARRAYSIZE(layout);
-
-		m_Device->CreateInputLayout(layout, numElements, buffer, fsize, &m_VertexLayout);
-
-		delete[] buffer;
-	}
-
-	// ピクセルシェーダ生成
-	{
-		FILE* file;
-		long int fsize;
-
-		file = fopen("pixelShader.cso", "rb");
-		fsize = _filelength(_fileno(file));
-		unsigned char* buffer = new unsigned char[fsize];
-		fread(buffer, fsize, 1, file);
-		fclose(file);
-
-		m_Device->CreatePixelShader(buffer, fsize, NULL, &m_PixelShader);
-
-		delete[] buffer;
-	}
-
+	// シェーダーの生成
+	CompileVertexShader();
+	CompilePixelShader();
+	
 	// 定数バッファ生成
 	D3D11_BUFFER_DESC hBufferDesc;
 	hBufferDesc.ByteWidth = sizeof(D3DXMATRIX);
@@ -257,7 +267,7 @@ void Wrapper::DirectX11::Uninit()
 void Wrapper::DirectX11::Begin()
 {
 	// バックバッファクリア
-	float ClearColor[4] = { 0.3f, 1.0f, 0.3f, 1.0f };
+	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	m_ImmediateContext->ClearRenderTargetView(m_RenderTargetView, ClearColor);
 	m_ImmediateContext->ClearDepthStencilView(m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
