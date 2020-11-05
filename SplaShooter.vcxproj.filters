@@ -114,6 +114,9 @@
     <ClCompile Include="SettingShader.cpp">
       <Filter>ソース ファイル\System</Filter>
     </ClCompile>
+    <ClCompile Include="TestScene.cpp">
+      <Filter>ソース ファイル\Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -161,6 +164,9 @@
     <ClInclude Include="SettingShader.h">
       <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>ヘッダー ファイル\Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="pixelShader.cso">
@@ -180,5 +186,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDoList.txt" />
+    <Text Include="memo.txt" />
   </ItemGroup>
 </Project>

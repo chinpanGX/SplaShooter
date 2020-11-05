@@ -157,6 +157,7 @@
     <ClCompile Include="SettingShader.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="TestPlayer.cpp" />
+    <ClCompile Include="TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="SettingShader.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="TestPlayer.h" />
+    <ClInclude Include="TestScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="pixelShader.cso" />
@@ -203,6 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDoList.txt" />
+    <Text Include="memo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

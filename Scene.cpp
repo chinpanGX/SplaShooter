@@ -10,8 +10,8 @@
 #include "InputDevice.h"
 #include "Manager.h"
 #include "Camera.h"
-#include "TestPlayer.h"
 #include "SettingShader.h"
+#include "TestScene.h"
 
 // タイトルシーン
 #pragma region GameScene_Title_Func
@@ -33,10 +33,7 @@ void GameScene::Title::Update()
 	{
 		Manager::SetScene<Game>();
 	}
-	if (KeyBoard::IsTrigger(DIK_R))
-	{
-		Manager::SetScene<Test>();
-	}
+	Test::ChangeScene::TestMap1();
 }
 
 void GameScene::Title::Draw()
@@ -52,9 +49,6 @@ void GameScene::Game::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
 	AddGameObject<DrawBg::Game>(LAYER_2D_BG);
-
-	// シェーダーテスト用
-	AddGameObject<TestPlayer>(LAYER_3D);
 }
 
 void GameScene::Game::Uninit()
@@ -78,26 +72,3 @@ void GameScene::Game::Draw()
 	Scene::Draw();
 }
 #pragma endregion Gameクラスの関数定義
-
-void GameScene::Test::Init()
-{
-
-}
-
-void GameScene::Test::Uninit()
-{
-
-}
-
-void GameScene::Test::Update()
-{
-	if (KeyBoard::IsTrigger(DIK_T))
-	{
-		Manager::SetScene<Title>();
-	}
-}
-
-void GameScene::Test::Draw()
-{
-
-}
