@@ -55,6 +55,12 @@
     <Filter Include="リソース ファイル\Shader\Vertex">
       <UniqueIdentifier>{91964144-4316-413d-89f3-fd76e7b9dd26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game\3D">
+      <UniqueIdentifier>{074e0f47-eba4-4e4e-9a0d-c99066be0623}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\3D">
+      <UniqueIdentifier>{df8596e1-d7ec-4bc8-a387-d610e85595da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -87,6 +93,9 @@
     <ClCompile Include="Audio.cpp">
       <Filter>ソース ファイル\Game\Sound</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>ソース ファイル\Game\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -118,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="Audio.h">
       <Filter>ヘッダー ファイル\Game\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>ヘッダー ファイル\Game\3D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
