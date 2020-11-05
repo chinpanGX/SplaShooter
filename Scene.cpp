@@ -33,7 +33,7 @@ void GameScene::Title::Update()
 	{
 		Manager::SetScene<Game>();
 	}
-	Test::ChangeScene::TestMap1();
+	Test::Run();
 }
 
 void GameScene::Title::Draw()

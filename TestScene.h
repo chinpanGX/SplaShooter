@@ -7,13 +7,21 @@
 #pragma once
 #include "Scene.h"
 
+// 指定のテストマップへシーンチェンジする関数をまとめる
+struct ChangeScene
+{
+	static void ReturnTitle(); // タイトルに戻る
+	static void TestMap1(); // １
+};
+
+
 namespace Test
 {
-	// 指定のテストマップへシーンチェンジする関数をまとめる
-	struct ChangeScene
+	// テストの実行
+	inline void Run()
 	{
-		static void TestMap1(); // １
-	};
+		ChangeScene::TestMap1();
+	}
 
 	// テストシーン１
 	class TestMap1 : public Scene

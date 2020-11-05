@@ -6,6 +6,7 @@
 ----------------------------------------------------------*/
 #pragma once
 #include "DirectX11.h"
+#include "Shader.h"
 
 namespace Effect
 {
@@ -28,6 +29,7 @@ namespace Effect
 	class Water
 	{
 	private:
+		Shader* m_Shader = NULL;
 		// エフェクトのパラメータ
 		struct Parameter
 		{
@@ -36,9 +38,6 @@ namespace Effect
 			float m_Distortion;	// 歪みの強度
 		};
 		Parameter m_Parameter;
-		// シェーダー
-		ID3D11VertexShader* m_VertexShader = NULL;
-		ID3D11PixelShader* m_PixelShader = NULL;
 	public:
 		void Init();
 		void Uninit();
