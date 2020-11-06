@@ -67,7 +67,7 @@ Shader::~Shader()
 }
 
 // •`‰æ
-void Shader::Render()
+void Shader::Draw()
 {
 	auto& dx = Wrapper::DirectX11::Instance();
 	dx.GetDeviceContext()->IASetInputLayout(m_InputLayout);

@@ -17,5 +17,5 @@ void TestPlayer::Update()
 
 void TestPlayer::Draw()
 {
-	m_Shader->Render();
+	m_Shader->Draw();
 }

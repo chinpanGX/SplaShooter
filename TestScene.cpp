@@ -4,6 +4,7 @@
 #include "TestPlayer.h"
 #include "Camera.h"
 #include "Effect.h"
+#include "TestField.h"
 
 void ChangeScene::ReturnTitle()
 {
@@ -26,7 +27,8 @@ Effect::Water m_water;
 void Test::TestMap1::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
-	AddGameObject<TestPlayer>(LAYER_3D);
+	//AddGameObject<TestPlayer>(LAYER_3D);
+	AddGameObject<TestField>(LAYER_3D);
 	m_water.Init();
 }
 

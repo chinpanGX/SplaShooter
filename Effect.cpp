@@ -33,5 +33,5 @@ void Effect::Water::Render()
 	auto& dx = Wrapper::DirectX11::Instance();
 	// ‘S‰æ–Êƒ|ƒŠƒSƒ“‚Ì•`‰æ
 	dx.GetDeviceContext()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-	m_Shader->Render();
+	m_Shader->Draw();
 }

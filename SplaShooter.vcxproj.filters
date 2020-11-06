@@ -67,6 +67,12 @@
     <Filter Include="ヘッダー ファイル\System">
       <UniqueIdentifier>{3adb2185-dc24-4c6c-8333-d1ec40ac88dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game\Rendering">
+      <UniqueIdentifier>{2ee51e82-076a-4d91-8d2a-07c716ceed65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Rendering">
+      <UniqueIdentifier>{94b6e8eb-e11f-413a-92d1-01fdb34cd04e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -105,23 +111,26 @@
     <ClCompile Include="Effect.cpp">
       <Filter>ソース ファイル\Game\2D</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>ソース ファイル\System</Filter>
-    </ClCompile>
     <ClCompile Include="TestPlayer.cpp">
       <Filter>ソース ファイル\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="SettingShader.cpp">
-      <Filter>ソース ファイル\System</Filter>
     </ClCompile>
     <ClCompile Include="TestScene.cpp">
       <Filter>ソース ファイル\Test</Filter>
     </ClCompile>
-    <ClCompile Include="Object3D.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Shader.cpp">
+      <Filter>ソース ファイル\Game\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingShader.cpp">
+      <Filter>ソース ファイル\Game\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Game\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Object3D.cpp">
+      <Filter>ソース ファイル\Game\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="TestField.cpp">
+      <Filter>ソース ファイル\Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,23 +170,26 @@
     <ClInclude Include="Effect.h">
       <Filter>ヘッダー ファイル\Game\2D</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>ヘッダー ファイル\System</Filter>
-    </ClInclude>
     <ClInclude Include="TestPlayer.h">
       <Filter>ヘッダー ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingShader.h">
-      <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
     <ClInclude Include="TestScene.h">
       <Filter>ヘッダー ファイル\Test</Filter>
     </ClInclude>
-    <ClInclude Include="Object3D.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Shader.h">
+      <Filter>ヘッダー ファイル\Game\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingShader.h">
+      <Filter>ヘッダー ファイル\Game\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Game\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Object3D.h">
+      <Filter>ヘッダー ファイル\Game\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="TestField.h">
+      <Filter>ヘッダー ファイル\Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +205,8 @@
     <None Include="waterPS.cso">
       <Filter>リソース ファイル\Shader\Pixel</Filter>
     </None>
+    <None Include="normalMappingPS.cso" />
+    <None Include="normalMappingVS.cso" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelShader.hlsl">
@@ -207,6 +221,8 @@
     <FxCompile Include="waterVS.hlsl">
       <Filter>リソース ファイル\Shader\Vertex</Filter>
     </FxCompile>
+    <FxCompile Include="normalMappingPS.hlsl" />
+    <FxCompile Include="normalMappingVS.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDoList.txt" />

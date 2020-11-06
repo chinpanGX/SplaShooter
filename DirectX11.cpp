@@ -201,7 +201,7 @@ void Wrapper::DirectX11::Uninit()
 void Wrapper::DirectX11::Begin()
 {
 	// バックバッファクリア
-	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	float ClearColor[4] = { 0.0f, 0.5f, 0.0f, 1.0f };
 	m_ImmediateContext->ClearRenderTargetView(m_RenderTargetView, ClearColor);
 	m_ImmediateContext->ClearDepthStencilView(m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
@@ -275,3 +275,4 @@ void Wrapper::DirectX11::SetLight(LIGHT Light)
 {
 	m_ImmediateContext->UpdateSubresource(m_LightBuffer, 0, NULL, &Light, 0, 0);
 }
+

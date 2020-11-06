@@ -157,6 +157,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SettingShader.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="TestField.cpp" />
     <ClCompile Include="TestPlayer.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -177,17 +178,32 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SettingShader.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="TestField.h" />
     <ClInclude Include="TestPlayer.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="normalMappingPS.cso" />
+    <None Include="normalMappingVS.cso" />
     <None Include="pixelShader.cso" />
     <None Include="vertexShader.cso" />
     <None Include="waterPS.cso" />
     <None Include="waterVS.cso" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="normalMappingPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="normalMappingVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
     <FxCompile Include="pixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>

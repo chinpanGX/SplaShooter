@@ -25,5 +25,5 @@ public:
 	Shader() {};
 	Shader(const char* VertexShader_FileName, const char* PixelShader_FileName);
 	~Shader();
-	void Render();
+	void Draw();
 };

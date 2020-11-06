@@ -22,5 +22,5 @@ void SettingShader::Update()
 
 void SettingShader::Draw()
 {
-	m_Shader->Render();
+	m_Shader->Draw();
 }
