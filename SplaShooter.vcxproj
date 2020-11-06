@@ -152,12 +152,14 @@
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Object3D.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SettingShader.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="TestPlayer.cpp" />
     <ClCompile Include="TestScene.cpp" />
+    <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -170,12 +172,14 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="Object3D.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SettingShader.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="TestPlayer.h" />
     <ClInclude Include="TestScene.h" />
+    <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="pixelShader.cso" />

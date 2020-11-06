@@ -1,33 +1,10 @@
+/*-----------------------------------------------------------
+
+	[Renderer.cpp]
+	Author : 出合翔太
+
+------------------------------------------------------------*/
 #include "Renderer.h"
-
-#pragma region Define_Texture_Func
-Sprite2D::Texture::Texture()
-{
-	m_Texture[32] = NULL;
-}
-
-// ロード
-unsigned int Sprite2D::Texture::Load(Wrapper::DirectX11& dx, const char * FileName)
-{
-	unsigned int texture = 0;
-	D3DX11CreateShaderResourceViewFromFile(dx.GetDevice(), FileName, NULL, NULL, &m_Texture[m_ImageCount++], NULL);
-	texture = m_ImageCount - 1;
-	return texture;
-}
-
-// アンロード
-void Sprite2D::Texture::Unload(unsigned int Texture)
-{
-	m_Texture[Texture]->Release();
-}
-
-// セット
-ID3D11ShaderResourceView* Sprite2D::Texture::SetTexture(unsigned int Texture)
-{
-	return m_Texture[Texture];
-}
-#pragma endregion Textureクラスの関数定義
-
 
 #pragma region Define_Sprite_Func
 void Sprite2D::Sprite::Init(Wrapper::DirectX11& dx)
@@ -138,30 +115,29 @@ void Sprite2D::Sprite::Draw(Wrapper::DirectX11& dx, ID3D11ShaderResourceView * t
 }
 #pragma endregion Spriteクラスの関数定義
 
-
 #pragma region Spriterenderer_Func
 // ロード
-void SpriteRenderer::Load(const char * Filename)
+void Sprite2D::Renderer::Load(const char * Filename)
 {
 	m_Sprite.Init(m_dx);
 	m_Storage = m_Texture.Load(m_dx, Filename);
 }
 
 // アンロード
-void SpriteRenderer::Unload()
+void Sprite2D::Renderer::Unload()
 {
 	m_Sprite.Uninit();
 	m_Texture.Unload(m_Storage);
 }
 
 // 描画
-void SpriteRenderer::Draw(D3DXVECTOR2 drawPosition, D3DXVECTOR2 drawSize, D3DXVECTOR2 texUpLeft, D3DXVECTOR2 texDownRight, D3DXCOLOR color)
+void Sprite2D::Renderer::Draw(D3DXVECTOR2 drawPosition, D3DXVECTOR2 drawSize, D3DXVECTOR2 texUpLeft, D3DXVECTOR2 texDownRight, D3DXCOLOR color)
 {
 	m_Sprite.Draw(m_dx, m_Texture.SetTexture(m_Storage), drawPosition, drawSize, texUpLeft, texDownRight, color);
 }
 
 // α値のセット
-void SpriteRenderer::SetAlpha(float alpha)
+void Sprite2D::Renderer::SetAlpha(float alpha)
 {
 	m_Sprite.SetAlpha(alpha);
 }
