@@ -22,6 +22,14 @@ void ChangeScene::TestMap1()
 	}
 }
 
+void ChangeScene::TestMap2()
+{
+	if (KeyBoard::IsTrigger(DIK_2))
+	{
+		Manager::SetScene<Test::TestMap2>();
+	}
+}
+
 TestField* g_Field;
 
 void Test::TestMap1::Init()

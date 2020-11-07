@@ -8,7 +8,7 @@
 
 void SettingShader::Init()
 {
-	m_Shader = new Shader("vertexShader.cso", "pixelShader.cso");
+	m_Shader = new Shader("Asset/Shader/vertexShader.cso", "Asset/Shader/pixelShader.cso");
 }
 
 void SettingShader::Uninit()

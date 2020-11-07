@@ -34,8 +34,11 @@ void TestField::Init()
 	m_Object = new Object3D(dx,vertex);
 	// シェーダーの読み込み
 	// ↓画面真っ暗の原因
-	//m_Shader = new Shader("MappingVS.cso", "MappingPS.cso");
-	m_Shader = new Shader("vertexShader.cso", "pixelShader.cso");
+	m_Shader = new Shader("Asset/Shader/MappingVS.cso", "Asset/Shader/MappingPS.cso");
+	// ↓床だけ真っ暗
+	//m_Shader = new Shader("Asset/Shader/vertexShader.cso", "Asset/Shader/MappingPS.cso");
+
+	//m_Shader = new Shader("vertexShader.cso", "pixelShader.cso");
 
 	// テクスチャの読み込み
 	m_TextureStorge[1] = m_Texture[0].Load(dx, "Asset/Texture/field004.jpg");

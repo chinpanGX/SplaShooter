@@ -169,40 +169,25 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="pixelShader.cso">
-      <Filter>リソース ファイル\Shader\Pixel</Filter>
-    </None>
-    <None Include="vertexShader.cso">
-      <Filter>リソース ファイル\Shader\Vertex</Filter>
-    </None>
-    <None Include="waterVS.cso">
-      <Filter>リソース ファイル\Shader\Vertex</Filter>
-    </None>
-    <None Include="waterPS.cso">
-      <Filter>リソース ファイル\Shader\Pixel</Filter>
-    </None>
-    <None Include="MappingVS.cso" />
-    <None Include="MappingPS.cso" />
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="pixelShader.hlsl">
-      <Filter>リソース ファイル\Shader\Pixel</Filter>
-    </FxCompile>
-    <FxCompile Include="vertexShader.hlsl">
+    <FxCompile Include="Asset\Shader\MappingVS.hlsl">
       <Filter>リソース ファイル\Shader\Vertex</Filter>
     </FxCompile>
-    <FxCompile Include="waterPS.hlsl">
+    <FxCompile Include="Asset\Shader\MappingPS.hlsl">
       <Filter>リソース ファイル\Shader\Pixel</Filter>
     </FxCompile>
-    <FxCompile Include="waterVS.hlsl">
-      <Filter>リソース ファイル\Shader\Vertex</Filter>
-    </FxCompile>
-    <FxCompile Include="MappingPS.hlsl">
+    <FxCompile Include="Asset\Shader\pixelShader.hlsl">
       <Filter>リソース ファイル\Shader\Pixel</Filter>
     </FxCompile>
-    <FxCompile Include="MappingVS.hlsl">
+    <FxCompile Include="Asset\Shader\vertexShader.hlsl">
       <Filter>リソース ファイル\Shader\Vertex</Filter>
     </FxCompile>
+    <FxCompile Include="Asset\Shader\waterVS.hlsl">
+      <Filter>リソース ファイル\Shader\Vertex</Filter>
+    </FxCompile>
+    <FxCompile Include="Asset\Shader\waterPS.hlsl">
+      <Filter>リソース ファイル\Shader\Pixel</Filter>
+    </FxCompile>
+    <FxCompile Include="Asset\Shader\Common.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDoList.txt" />
