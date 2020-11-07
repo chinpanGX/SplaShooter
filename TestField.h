@@ -15,6 +15,8 @@ private:
 	class Shader*   m_Shader = NULL;
 	Texture  m_Texture[2];
 	unsigned int m_TextureStorge[2];
+
+	void CreateVertex(Wrapper::VERTEX_3D Vertex[4]);
 public:
 	void Init()override;
 	void Uninit()override;

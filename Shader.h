@@ -22,7 +22,7 @@ private:
 	void CreateVertexShader(Wrapper::DirectX11& dx, ID3D11VertexShader** VertexShader, ID3D11InputLayout** InputLayout, const char* FileName);
 	void CreatePixelShader(Wrapper::DirectX11& dx, ID3D11PixelShader** PixelShader, const char* FileName);
 public:
-	Shader() {};
+	Shader() = delete; // 空のコンストラクタを呼ばないように
 	Shader(const char* VertexShader_FileName, const char* PixelShader_FileName);
 	~Shader();
 	void Draw();

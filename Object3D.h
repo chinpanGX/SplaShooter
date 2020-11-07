@@ -13,7 +13,8 @@ class Object3D
 private:
 	ID3D11Buffer* m_VertexBuffer = NULL;
 public:
-	Object3D();
+	Object3D() = delete; // 空のコンストラクタを呼ばないように
+	Object3D(Wrapper::DirectX11& dx, Wrapper::VERTEX_3D Vertex[4]);
 	~Object3D();
 	// Slot = セットするスロット数,Texture = テクスチャ
 	void SetTexture(Wrapper::DirectX11 & instance, int Slot, ID3D11ShaderResourceView* Texture);
