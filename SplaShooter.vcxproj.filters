@@ -211,12 +211,8 @@
     <None Include="waterPS.cso">
       <Filter>リソース ファイル\Shader\Pixel</Filter>
     </None>
-    <None Include="normalMappingVS.cso">
-      <Filter>リソース ファイル\Shader\Vertex</Filter>
-    </None>
-    <None Include="normalMappingPS.cso">
-      <Filter>リソース ファイル\Shader\Pixel</Filter>
-    </None>
+    <None Include="MappingVS.cso" />
+    <None Include="MappingPS.cso" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelShader.hlsl">
@@ -231,11 +227,11 @@
     <FxCompile Include="waterVS.hlsl">
       <Filter>リソース ファイル\Shader\Vertex</Filter>
     </FxCompile>
-    <FxCompile Include="normalMappingVS.hlsl">
-      <Filter>リソース ファイル\Shader\Vertex</Filter>
-    </FxCompile>
-    <FxCompile Include="normalMappingPS.hlsl">
+    <FxCompile Include="MappingPS.hlsl">
       <Filter>リソース ファイル\Shader\Pixel</Filter>
+    </FxCompile>
+    <FxCompile Include="MappingVS.hlsl">
+      <Filter>リソース ファイル\Shader\Vertex</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
