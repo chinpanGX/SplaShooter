@@ -233,6 +233,9 @@
     <FxCompile Include="MappingVS.hlsl">
       <Filter>リソース ファイル\Shader\Vertex</Filter>
     </FxCompile>
+    <FxCompile Include="common.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDoList.txt" />
