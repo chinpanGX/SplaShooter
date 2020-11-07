@@ -434,6 +434,6 @@ long Mouse::GetMouseZ()
 {
 	return m_mouseState.lZ;
 }
-#pragma endregion ゲームパッドの処理
+#pragma endregion マウスの処理
 
 

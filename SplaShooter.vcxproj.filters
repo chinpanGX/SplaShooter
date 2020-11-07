@@ -46,8 +46,32 @@
     <Filter Include="ソース ファイル\Game\Rendering">
       <UniqueIdentifier>{2ee51e82-076a-4d91-8d2a-07c716ceed65}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Game\Base">
-      <UniqueIdentifier>{dc70d767-6f92-4ed9-8e6f-3d42b184b4f2}</UniqueIdentifier>
+    <Filter Include="ヘッダー ファイル\Game">
+      <UniqueIdentifier>{b7934726-0ff5-4846-a1d2-08fa282250be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\System">
+      <UniqueIdentifier>{c36a64f1-00c1-49c6-8296-7302ae3ae893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Test">
+      <UniqueIdentifier>{0dfac4a9-7f01-4d24-84b8-84cba9ed13fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\2D">
+      <UniqueIdentifier>{6f2f0b96-7289-4ce7-81d4-da26b5443364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\3D">
+      <UniqueIdentifier>{e986dcad-f6f5-4573-aff9-d93bf3dbec0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Base">
+      <UniqueIdentifier>{b612952c-97d8-404d-909a-ecc65ad7c11d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Rendering">
+      <UniqueIdentifier>{d310db79-8d90-472a-ba16-1a29a3d66297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Scene">
+      <UniqueIdentifier>{ffae15c2-449a-4820-9eb0-035e781f700a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Sound">
+      <UniqueIdentifier>{fa703c77-45d3-4a4f-9af1-367322f25dfd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,64 +132,70 @@
     <ClCompile Include="TestField.cpp">
       <Filter>ソース ファイル\Test</Filter>
     </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Effect.h">
-      <Filter>ソース ファイル\Game\2D</Filter>
-    </ClInclude>
     <ClInclude Include="Bg.h">
-      <Filter>ソース ファイル\Game\2D</Filter>
+      <Filter>ヘッダー ファイル\Game\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>ヘッダー ファイル\Game\2D</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>ソース ファイル\Game\2D</Filter>
+      <Filter>ヘッダー ファイル\Game\2D</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>ソース ファイル\Game\3D</Filter>
+      <Filter>ヘッダー ファイル\Game\3D</Filter>
     </ClInclude>
     <ClInclude Include="Object3D.h">
-      <Filter>ソース ファイル\Game\3D</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingShader.h">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="TestField.h">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="TestPlayer.h">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScene.h">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>ソース ファイル\System</Filter>
-    </ClInclude>
-    <ClInclude Include="DirectX11.h">
-      <Filter>ソース ファイル\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Fps.h">
-      <Filter>ソース ファイル\System</Filter>
-    </ClInclude>
-    <ClInclude Include="InputDevice.h">
-      <Filter>ソース ファイル\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>ソース ファイル\Game\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>ソース ファイル\Game\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio.h">
-      <Filter>ソース ファイル\Game\Sound</Filter>
+      <Filter>ヘッダー ファイル\Game\3D</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>ソース ファイル\Game\Base</Filter>
+      <Filter>ヘッダー ファイル\Game\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingShader.h">
+      <Filter>ヘッダー ファイル\Game\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>ヘッダー ファイル\Game\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>ヘッダー ファイル\Game\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>ヘッダー ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>ヘッダー ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>ヘッダー ファイル\Game\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="TestField.h">
+      <Filter>ヘッダー ファイル\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="TestPlayer.h">
+      <Filter>ヘッダー ファイル\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>ヘッダー ファイル\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX11.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Fps.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDevice.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

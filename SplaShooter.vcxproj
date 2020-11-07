@@ -149,6 +149,7 @@
     <ClCompile Include="DirectX11.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Fps.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Fps.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Object3D.h" />
