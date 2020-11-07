@@ -23,13 +23,12 @@ void ChangeScene::TestMap1()
 }
 
 TestField* g_Field;
-Camera g_Camera;
 
 void Test::TestMap1::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
 	//AddGameObject<TestPlayer>(LAYER_3D);
-//ddGameObject<TestField>(LAYER_3D);
+	//ddGameObject<TestField>(LAYER_3D);
 	//g_Camera.Init();
 	g_Field = new TestField;
 	g_Field->Init();
