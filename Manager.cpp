@@ -46,6 +46,7 @@ void Manager::Update()
 void Manager::Draw()
 {
 	m_dx.Begin();
+	
 	//3D—pƒ‰ƒCƒgÝ’è
 	Wrapper::LIGHT light;
 	light.Enable = true;
@@ -54,8 +55,13 @@ void Manager::Draw()
 	light.Ambient = D3DXCOLOR(0.1f, 0.1f, 0.1f, 1.0f);
 	light.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	m_dx.SetLight(light);
+	
 	m_Scene->Draw();
 	m_Fade.Draw();
+	
+	light.Enable = false;
+	m_dx.SetLight(light);
+
 	m_dx.End();
 }
 

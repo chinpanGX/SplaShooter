@@ -160,14 +160,21 @@ void Wrapper::DirectX11::Init()
 	m_ImmediateContext->VSSetConstantBuffers(2, 1, &m_ProjectionBuffer);
 
 	hBufferDesc.ByteWidth = sizeof(MATERIAL);
-
 	m_Device->CreateBuffer(&hBufferDesc, NULL, &m_MaterialBuffer);
 	m_ImmediateContext->VSSetConstantBuffers(3, 1, &m_MaterialBuffer);
 
 	hBufferDesc.ByteWidth = sizeof(LIGHT);
-
 	m_Device->CreateBuffer(&hBufferDesc, NULL, &m_LightBuffer);
 	m_ImmediateContext->VSSetConstantBuffers(4, 1, &m_LightBuffer);
+
+	hBufferDesc.ByteWidth = sizeof(D3DXVECTOR4);
+	m_Device->CreateBuffer(&hBufferDesc, NULL, &m_CameraBuffer);
+	m_ImmediateContext->PSSetConstantBuffers(5, 1, &m_CameraBuffer);
+
+	hBufferDesc.ByteWidth = sizeof(D3DXVECTOR4);
+	m_Device->CreateBuffer(&hBufferDesc, NULL, &m_ParameterBuffer);
+	m_ImmediateContext->PSSetConstantBuffers(6, 1, &m_ParameterBuffer);
+	   
 
 	// ライト無効化
 	LIGHT light;
@@ -185,6 +192,8 @@ void Wrapper::DirectX11::Init()
 void Wrapper::DirectX11::Uninit()
 {
 	// オブジェクト解放
+	m_ParameterBuffer->Release();
+	m_CameraBuffer->Release();
 	m_WorldBuffer->Release();
 	m_ViewBuffer->Release();
 	m_ProjectionBuffer->Release();
@@ -274,5 +283,15 @@ void Wrapper::DirectX11::SetMaterial(MATERIAL Material)
 void Wrapper::DirectX11::SetLight(LIGHT Light)
 {
 	m_ImmediateContext->UpdateSubresource(m_LightBuffer, 0, NULL, &Light, 0, 0);
+}
+
+void Wrapper::DirectX11::SetCameraPosition(D3DXVECTOR3 CameraPosition)
+{
+	m_ImmediateContext->UpdateSubresource(m_CameraBuffer, 0, NULL, &D3DXVECTOR4(CameraPosition.x, CameraPosition.y, CameraPosition.z, 1.0f), 0, 0);
+}
+
+void Wrapper::DirectX11::SetParameter(D3DXVECTOR4 Parameter)
+{
+	m_ImmediateContext->UpdateSubresource(m_ParameterBuffer, 0, NULL, &Parameter, 0, 0);
 }
 

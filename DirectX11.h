@@ -118,6 +118,8 @@ namespace Wrapper
 		ID3D11Buffer*				m_ProjectionBuffer = NULL;
 		ID3D11Buffer*				m_MaterialBuffer = NULL;
 		ID3D11Buffer*				m_LightBuffer = NULL;
+		ID3D11Buffer*				m_CameraBuffer = NULL;
+		ID3D11Buffer*				m_ParameterBuffer = NULL;
 		ID3D11DepthStencilState*	m_DepthStateEnable = NULL;
 		ID3D11DepthStencilState*	m_DepthStateDisable = NULL;
 
@@ -139,6 +141,9 @@ namespace Wrapper
 		void SetProjectionMatrix(D3DXMATRIX * ProjectionMatrix);
 		void SetMaterial(MATERIAL Material);
 		void SetLight(LIGHT Light);
+		void SetCameraPosition(D3DXVECTOR3 CameraPosition);
+		void SetParameter(D3DXVECTOR4 Parameter);
+
 		ID3D11Device* GetDevice() { return m_Device; }
 		ID3D11DeviceContext* GetDeviceContext() { return m_ImmediateContext; }
 	};

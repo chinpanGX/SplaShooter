@@ -22,30 +22,32 @@ void ChangeScene::TestMap1()
 	}
 }
 
-Effect::Water m_water;
+TestField g_Field;
+Camera g_Camera;
 
 void Test::TestMap1::Init()
 {
-	AddGameObject<Camera>(LAYER_CAMERA);
+	//AddGameObject<Camera>(LAYER_CAMERA);
 	//AddGameObject<TestPlayer>(LAYER_3D);
-	AddGameObject<TestField>(LAYER_3D);
-	m_water.Init();
+//ddGameObject<TestField>(LAYER_3D);
+	g_Camera.Init();
+	g_Field.Init();
 }
 
 void Test::TestMap1::Uninit()
 {
-	m_water.Uninit();
 	Scene::Uninit();
 }
 
 void Test::TestMap1::Update()
 {
-	Scene::Update();
+	//Scene::Update();
 	ChangeScene::ReturnTitle();
 }
 
 void Test::TestMap1::Draw()
 {
-	Scene::Draw();
-	m_water.Render();
+	//Scene::Draw();
+	g_Camera.Draw();
+	g_Field.Draw();
 }
