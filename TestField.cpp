@@ -8,7 +8,7 @@ void TestField::Init()
 	// ↓インスタンス生成
 	m_Object = new Object3D;
 	// シェーダーの読み込み
-	m_Shader = new Shader("normalMappingVS.cso", "normalMappingPS.cso");
+	//m_Shader = new Shader("normalMappingVS.cso", "normalMappingPS.cso");
 	// テクスチャの読み込み
 	m_TextureStorge[1] = m_Texture[0].Load(dx, "Asset/Texture/field004.jpg");
 	m_TextureStorge[1] = m_Texture[1].Load(dx, "Asset/Texture/waffuru.tif");
