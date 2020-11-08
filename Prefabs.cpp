@@ -25,10 +25,12 @@ void Prefabs::Texture::Destory()
 
 void Prefabs::Texture::Load(Wrapper::DirectX11& dx)
 {
-	Create(3);
+	Create(5);
 	m_Id[0] = m_Texture[0].Load(dx, "Asset/Texture/black.png");
 	m_Id[1] = m_Texture[1].Load(dx, "Asset/Texture/Title.png");
 	m_Id[2] = m_Texture[2].Load(dx, "Asset/Texture/Game.png");
+	m_Id[3] = m_Texture[3].Load(dx, "Asset/Texture/field004.jpg");
+	m_Id[4] = m_Texture[4].Load(dx, "Asset/Texture/waffuru.tif");
 }
 
 void Prefabs::Texture::Unload()
@@ -63,8 +65,9 @@ void Prefabs::VertexShader::Destory()
 
 void Prefabs::VertexShader::Load(Wrapper::DirectX11& dx)
 {
-	Create(1);
+	Create(2);
 	m_Id[0] = m_VertexShader[0].Load(dx, "Asset/Shader/vertexShader.cso");
+	m_Id[1] = m_VertexShader[1].Load(dx, "Asset/Shader/MappingVS.cso");
 }
 
 void Prefabs::VertexShader::Unload()
@@ -103,8 +106,9 @@ void Prefabs::PixelShader::Destory()
 
 void Prefabs::PixelShader::Load(Wrapper::DirectX11 & dx)
 {
-	Create(1);
+	Create(2);
 	m_Id[0] = m_PixelShader[0].Load(dx, "Asset/Shader/pixelShader.cso");
+	m_Id[1] = m_PixelShader[1].Load(dx, "Asset/Shader/MappingPS.cso");
 }
 
 void Prefabs::PixelShader::Unload()

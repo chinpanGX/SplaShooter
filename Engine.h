@@ -24,8 +24,9 @@ namespace Engine
 		static void Uninit();
 		static void Update();
 		static void Draw();
-		// テクスチャのゲッター
+		// テクスチャのGetter / Setter
 		static ID3D11ShaderResourceView* GetTexture(unsigned int Id);
+		static void SetTexture(Wrapper::DirectX11& dx, int slot, unsigned int Id); // slot = 設定するスロット、ID = 格納ID
 
 		// シェーダーの設定
 		static void SetVertexShader(Wrapper::DirectX11& dx, unsigned int Id);

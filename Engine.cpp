@@ -45,6 +45,12 @@ ID3D11ShaderResourceView * Engine::ObjectPool::GetTexture(unsigned int Id)
 	return m_Texture->GetTexture(Id);
 }
 
+void Engine::ObjectPool::SetTexture(Wrapper::DirectX11 & dx, int slot, unsigned int Id)
+{
+	ID3D11ShaderResourceView* t = m_Texture->GetTexture(Id);
+	dx.GetDeviceContext()->PSSetShaderResources(slot, 1, &t);
+}
+
 void Engine::ObjectPool::SetVertexShader(Wrapper::DirectX11 & dx, unsigned int Id)
 {
 	dx.GetDeviceContext()->VSSetShader(m_VertexShader->GetVertexShader(Id), NULL, 0);

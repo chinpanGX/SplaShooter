@@ -41,7 +41,9 @@ namespace Prefabs
 		{
 			FADE,
 			TATILE_BG,
-			GAME_BG
+			GAME_BG,
+			FIELD,
+			WAFFURU,
 		};
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
@@ -59,6 +61,7 @@ namespace Prefabs
 		enum ID : int
 		{
 			DEFAULT,
+			MAPPING,
 		};
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
@@ -77,6 +80,7 @@ namespace Prefabs
 		enum ID : int 
 		{
 			DEFAULT,
+			MAPPING,
 		};
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
