@@ -25,14 +25,14 @@ void Prefabs::PrefabsTexture::Load()
 {
 	auto & dx = Wrapper::DirectX11::Instance();
 	Create(3);
-	m_Texture[0].Load(dx, "Asset/Texture/black.png");
-	m_Texture[1].Load(dx, "Asset/Texture/Title.png");
-	m_Texture[2].Load(dx, "Asset/Texture/Game.png");
+	m_Id = m_Texture[0].Load(dx, "Asset/Texture/black.png");
+	m_Id = m_Texture[1].Load(dx, "Asset/Texture/Title.png");
+	m_Id = m_Texture[2].Load(dx, "Asset/Texture/Game.png");
 }
 
 void Prefabs::PrefabsTexture::Unload()
 {
-	for (int i = m_Id; i >= 0; i--)
+	for (int i = m_Id -1; i >= 0; i--)
 	{
 		m_Texture[m_Id].Unload();
 	}

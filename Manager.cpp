@@ -25,7 +25,7 @@ void Manager::Init()
 	m_dx.Init();
 	Engine::ObjectPool::Init();
 	m_Fade.Init();
-	SetScene<Test::TestMap1>();
+	SetScene<GameScene::Title>();
 	m_Fade.m_FadeState = m_Fade.FADE_IN;
 	ChangeScene(m_Fade.m_NextScene);
 }
@@ -35,6 +35,7 @@ void Manager::Uninit()
 {
 	m_Scene->Uninit();
 	delete m_Scene;
+	Engine::ObjectPool::Uninit();
 	m_dx.Uninit();
 }
 

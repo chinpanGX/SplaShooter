@@ -17,7 +17,7 @@
 #pragma region GameScene_Title_Func
 void GameScene::Title::Init()
 {
-	//AddGameObject<SettingShader>(LAYER_3D);
+	AddGameObject<SettingShader>(LAYER_3D);
 	AddGameObject<DrawBg::Title>(LAYER_2D_BG);
 }
 
@@ -48,7 +48,7 @@ void GameScene::Title::Draw()
 void GameScene::Game::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
-	//AddGameObject<SettingShader>(LAYER_3D);
+	AddGameObject<SettingShader>(LAYER_3D);
 	AddGameObject<DrawBg::Game>(LAYER_2D_BG);
 }
 

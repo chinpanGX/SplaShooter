@@ -25,8 +25,7 @@ Scene* Fade::m_NextScene = NULL; // ÉXÉ^ÉeÉBÉbÉNïœêî
 
 void Fade::Init()
 {
-	auto & dx = Wrapper::DirectX11::Instance();
-	m_Sprite.Init(dx);
+	m_Sprite.Init();
 	m_FadeTime = 0.5f;
 }
 
@@ -59,8 +58,7 @@ void Fade::Update()
 
 void Fade::Draw()
 {
-	auto & dx = Wrapper::DirectX11::Instance();
-	m_Sprite.Draw(dx, Engine::ObjectPool::GetTexture(0) ,Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Alpha));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::TextureID::FADE) ,Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Alpha));
 }
 #pragma endregion FadeÇÃä÷êîíËã`
 
@@ -68,12 +66,13 @@ void Fade::Draw()
 void DrawBg::Title::Init()
 {
 	auto & dx = Wrapper::DirectX11::Instance();
-	m_Sprite.Init(dx);
+	m_Sprite.Init();
 }
 
 void DrawBg::Title::Uninit()
 {
 	//m_Sprite.Unload();
+	m_Sprite.Uninit();
 }
 
 void DrawBg::Title::Update()
@@ -83,23 +82,19 @@ void DrawBg::Title::Update()
 
 void DrawBg::Title::Draw()
 {
-	//m_Sprite.Draw(Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f));
-	auto & dx = Wrapper::DirectX11::Instance();
-	m_Sprite.Draw(dx, Engine::ObjectPool::GetTexture(1), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::TATILE_BG), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 }
 #pragma endregion TitleÇÃîwåiï`âÊ
 
 #pragma region Game_Func
 void DrawBg::Game::Init()
 {
-	//m_Sprite.Load("Asset/Texture/Game.png");
-	auto & dx = Wrapper::DirectX11::Instance();
-	m_Sprite.Init(dx);
+	m_Sprite.Init();
 }
 
 void DrawBg::Game::Uninit()
 {
-	//m_Sprite.Unload();
+	m_Sprite.Uninit();
 }
 
 void DrawBg::Game::Update()
@@ -109,8 +104,6 @@ void DrawBg::Game::Update()
 
 void DrawBg::Game::Draw()
 {
-	//m_Sprite.Draw(Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f));
-	auto & dx = Wrapper::DirectX11::Instance();
-	m_Sprite.Draw(dx, Engine::ObjectPool::GetTexture(2), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::TextureID::GAME_BG), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 }
 #pragma endregion GameÇÃîwåiï`âÊ

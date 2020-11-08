@@ -10,27 +10,26 @@
 void Sprite2D::Sprite::Init(Wrapper::DirectX11& dx)
 {
 	Wrapper::VERTEX_3D vertex[4];
-	{
-		vertex[0].Position = D3DXVECTOR3(-1.0f, 1.0f, 0.0f);
-		vertex[0].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-		vertex[0].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertex[0].TexCoord = D3DXVECTOR2(0.0f, 0.0f);
+	vertex[0].Position = D3DXVECTOR3(-1.0f, 1.0f, 0.0f);
+	vertex[0].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	vertex[0].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
+	vertex[0].TexCoord = D3DXVECTOR2(0.0f, 0.0f);
 
-		vertex[1].Position = D3DXVECTOR3(1.0f, 1.0f, 0.0f);
-		vertex[1].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-		vertex[1].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertex[1].TexCoord = D3DXVECTOR2(10.0f, 0.0f);
+	vertex[1].Position = D3DXVECTOR3(1.0f, 1.0f, 0.0f);
+	vertex[1].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	vertex[1].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
+	vertex[1].TexCoord = D3DXVECTOR2(10.0f, 0.0f);
 
-		vertex[2].Position = D3DXVECTOR3(-1.0f, -1.0f, 0.0f);
-		vertex[2].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-		vertex[2].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertex[2].TexCoord = D3DXVECTOR2(0.0f, 10.0f);
+	vertex[2].Position = D3DXVECTOR3(-1.0f, -1.0f, 0.0f);
+	vertex[2].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	vertex[2].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
+	vertex[2].TexCoord = D3DXVECTOR2(0.0f, 10.0f);
 
-		vertex[3].Position = D3DXVECTOR3(1.0f, -1.0f, 0.0f);
-		vertex[3].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-		vertex[3].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertex[3].TexCoord = D3DXVECTOR2(10.0f, 10.0f);
-	}
+	vertex[3].Position = D3DXVECTOR3(1.0f, -1.0f, 0.0f);
+	vertex[3].Normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	vertex[3].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
+	vertex[3].TexCoord = D3DXVECTOR2(10.0f, 10.0f);
+	
 
 	//頂点バッファ生成
 	D3D11_BUFFER_DESC bd;
@@ -116,24 +115,20 @@ void Sprite2D::Sprite::Draw(Wrapper::DirectX11& dx, ID3D11ShaderResourceView * t
 #pragma endregion Spriteクラスの関数定義
 
 #pragma region Spriterenderer_Func
-// ロード
-void Sprite2D::Renderer::Load(const char * Filename)
+void Sprite2D::Renderer::Init()
 {
 	m_Sprite.Init(m_dx);
-	//m_Storage = m_Texture.Load(m_dx, Filename);
 }
 
-// アンロード
-void Sprite2D::Renderer::Unload()
+void Sprite2D::Renderer::Uninit()
 {
 	m_Sprite.Uninit();
-	//m_Texture.Unload(m_Storage);
 }
 
 // 描画
-void Sprite2D::Renderer::Draw(D3DXVECTOR2 drawPosition, D3DXVECTOR2 drawSize, D3DXVECTOR2 texUpLeft, D3DXVECTOR2 texDownRight, D3DXCOLOR color)
+void Sprite2D::Renderer::Draw(ID3D11ShaderResourceView* texture, D3DXVECTOR2 drawPosition, D3DXVECTOR2 drawSize, D3DXVECTOR2 texUpLeft, D3DXVECTOR2 texDownRight, D3DXCOLOR color)
 {
-	//m_Sprite.Draw(m_dx, m_Texture.SetTexture(m_Storage), drawPosition, drawSize, texUpLeft, texDownRight, color);
+	m_Sprite.Draw(m_dx, texture, drawPosition, drawSize, texUpLeft, texDownRight, color);
 }
 
 // α値のセット

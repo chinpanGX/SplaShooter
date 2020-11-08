@@ -16,7 +16,7 @@ class Bg : public GameObject
 {
 protected:
 	D3DXVECTOR2 m_Scrren;
-	Sprite2D::Sprite m_Sprite;
+	Sprite2D::Renderer m_Sprite;
 public:
 	virtual void Init() = 0;
 	virtual void Uninit() = 0;

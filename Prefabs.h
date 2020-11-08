@@ -14,6 +14,13 @@
 #pragma region Prefabs_Wrapper
 namespace Prefabs
 {
+	enum TextureID : int
+	{
+		FADE,
+		TATILE_BG,
+		GAME_BG
+	};
+
 #pragma region BaseClass_PrefabsBase
 	class PrefabsBase
 	{
@@ -32,8 +39,8 @@ namespace Prefabs
 	{
 	private:
 		Texture* m_Texture;
-		void Create(int size)override;
-		virtual void Destory();
+		void Create(int size)override; // size = ì‚éƒvƒŒƒnƒu‚Ì”
+		void Destory();
 	public:
 		void Load()override;
 		void Unload()override;
