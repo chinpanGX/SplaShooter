@@ -81,7 +81,7 @@ ID3D11InputLayout * Loader::VertexShader::GetInputLayout() const
 #pragma endregion Loader_VertexShaderƒNƒ‰ƒX‚ÌŠÖ”’è‹`
 
 #pragma region Loader_PixelShader_Func
-void Loader::pixelShader::CreatePixelShader(Wrapper::DirectX11 & dx, ID3D11PixelShader ** PixelShader, std::string FileName)
+void Loader::PixelShader::CreatePixelShader(Wrapper::DirectX11 & dx, ID3D11PixelShader ** PixelShader, std::string FileName)
 {
 	FILE* file;
 	long int fsize;
@@ -94,19 +94,19 @@ void Loader::pixelShader::CreatePixelShader(Wrapper::DirectX11 & dx, ID3D11Pixel
 	delete[] buffer;
 }
 
-unsigned int Loader::pixelShader::Load(Wrapper::DirectX11 & dx, std::string PixelShader_FileName)
+unsigned int Loader::PixelShader::Load(Wrapper::DirectX11 & dx, std::string PixelShader_FileName)
 {
 	m_Count++;
 	CreatePixelShader(dx, &m_PixelShader, PixelShader_FileName);
 	return m_Count;
 }
 
-void Loader::pixelShader::Unload()
+void Loader::PixelShader::Unload()
 {
 	m_PixelShader->Release();
 }
 
-ID3D11PixelShader * Loader::pixelShader::GetPixelShader() const
+ID3D11PixelShader * Loader::PixelShader::GetPixelShader() const
 {
 	return m_PixelShader;
 }

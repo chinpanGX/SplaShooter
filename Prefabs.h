@@ -6,14 +6,19 @@
 ------------------------------------------------------------*/
 #pragma once
 #include "GameObject.h"
-#include <vector>
+#include "Loader.h"
 
 #pragma region BaseClass_PrefabsBase
 class PrefabsBase
 {
 protected:
-	std::vector<unsigned int> m_Id;
-	virtual void Create(int size) {};
+	static const unsigned int m_Maxid = 256; // 配列の要素数
+	unsigned int m_Id[m_Maxid];	// IDの格納
+	int m_Size; // プレハブの数
+
+	//　生成
+	virtual void Create(int size) {}; // size = 作るプレハブの数
+	//　破棄
 	virtual void Destory() {};
 public:
 	virtual void Load(Wrapper::DirectX11& dx) = 0;
@@ -28,8 +33,8 @@ namespace Prefabs
 	class Texture : public PrefabsBase
 	{
 	private:
-		class Loader::Texture* m_Texture;
-		void Create(int size)override; // size = 作るプレハブの数
+		Loader::Texture* m_Texture;
+		void Create(int size)override; 
 		void Destory()override;
 	public:
 		enum ID : int
@@ -43,6 +48,7 @@ namespace Prefabs
 		ID3D11ShaderResourceView* GetTexture(unsigned int Id);
 	};
 
+	// 頂点シェーダー
 	class VertexShader : public PrefabsBase
 	{
 	private:
@@ -52,12 +58,29 @@ namespace Prefabs
 	public:
 		enum ID : int
 		{
-
+			DEFAULT,
 		};
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
 		ID3D11VertexShader* GetVertexShader(unsigned int Id);
 		ID3D11InputLayout* GetInputLayout(unsigned int Id);
+	};
+
+	// ピクセルシェーダー
+	class PixelShader : public PrefabsBase
+	{
+	private:
+		Loader::PixelShader* m_PixelShader;
+		void Create(int size)override;
+		void Destory();
+	public:
+		enum ID : int 
+		{
+			DEFAULT,
+		};
+		void Load(Wrapper::DirectX11& dx)override;
+		void Unload()override;
+		ID3D11PixelShader* GetPixelShader(unsigned int Id);
 	};
 }
 #pragma endregion Prefabsをまとめたもの

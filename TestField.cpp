@@ -1,5 +1,4 @@
 #include "TestField.h"
-#include "Shader.h"
 #include "Object3D.h"
 
 void TestField::CreateVertex(Wrapper::VERTEX_3D Vertex[4])
@@ -38,14 +37,14 @@ void TestField::Init()
 	// ↓床だけ真っ暗
 	//m_Shader = new Shader("Asset/Shader/vertexShader.cso", "Asset/Shader/MappingPS.cso");
 
-	m_Shader = new Shader("vertexShader.cso", "pixelShader.cso");
+	//m_Shader = new Shader("vertexShader.cso", "pixelShader.cso");
 
 	//dx.CreateVertexShader(&m_VertexShader, &m_InputLayout, "Asset/Shader/MappingVS.cso");
 	//dx.CreatePixelShader(&m_PixelShader, "Asset/Shader/MappingPS.cso");
 
 	// テクスチャの読み込み
-	m_TextureStorge[1] = m_Texture[0].Load(dx, "Asset/Texture/field004.jpg");
-	m_TextureStorge[1] = m_Texture[1].Load(dx, "Asset/Texture/waffuru.tif");
+	//m_TextureStorge[1] = m_Texture[0].Load(dx, "Asset/Texture/field004.jpg");
+	//m_TextureStorge[1] = m_Texture[1].Load(dx, "Asset/Texture/waffuru.tif");
 
 	m_Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -70,7 +69,7 @@ void TestField::Draw()
 {
 	auto & dx = Wrapper::DirectX11::Instance();
 	// シェーダーの描画
-	m_Shader->Draw();
+	//m_Shader->Draw();
 	//dx.GetDeviceContext()->IASetInputLayout(m_InputLayout);
 	//dx.GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
 	//dx.GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);

@@ -6,7 +6,6 @@
 ----------------------------------------------------------*/
 #pragma once
 #include "DirectX11.h"
-#include "Shader.h"
 
 namespace Effect
 {
@@ -29,7 +28,7 @@ namespace Effect
 	class Water
 	{
 	private:
-		Shader* m_Shader = NULL;
+		//Shader* m_Shader = NULL;
 		// エフェクトのパラメータ
 		struct Parameter
 		{

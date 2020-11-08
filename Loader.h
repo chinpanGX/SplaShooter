@@ -8,7 +8,7 @@
 #pragma once
 #include "DirectX11.h"
 
-class Loader
+class LoaderBase
 {
 protected:
 	unsigned int m_Count = -1;
@@ -17,7 +17,7 @@ protected:
 namespace Loader
 {
 	// テクスチャを管理
-	class Texture : public Loader
+	class Texture : public LoaderBase
 	{
 	private:
 		ID3D11ShaderResourceView* m_Texture = NULL;
@@ -28,7 +28,7 @@ namespace Loader
 	};
 
 	// 頂点シェーダー
-	class VertexShader : public Loader
+	class VertexShader : public LoaderBase
 	{
 	private:
 		ID3D11VertexShader* m_VertexShader = NULL;
@@ -43,7 +43,7 @@ namespace Loader
 	};
 
 	// ピクセルシェーダー
-	class pixelShader : public Loader
+	class PixelShader : public LoaderBase
 	{
 	private:
 		ID3D11PixelShader*	m_PixelShader = NULL;

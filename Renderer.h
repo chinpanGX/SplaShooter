@@ -6,7 +6,7 @@
 
 ---------------------------------------------------------*/
 #pragma once
-#include "Texture.h"
+#include "DirectX11.h"
 
 namespace Sprite2D
 {

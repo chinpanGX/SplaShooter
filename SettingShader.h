@@ -6,13 +6,10 @@
 -----------------------------------------------------------*/
 #pragma once
 #include "GameObject.h"
-#include "Shader.h"
 
 // ゲームシーン以外でシェーダーをセットするとき
 class SettingShader : public GameObject
 {
-private:
-	Shader* m_Shader = NULL;
 public:
 	void Init()override;
 	void Uninit()override;

@@ -58,7 +58,7 @@ void Fade::Update()
 
 void Fade::Draw()
 {
-	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::PrefabsTexture::FADE) ,Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Alpha));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::Texture::ID::FADE) ,Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Alpha));
 }
 #pragma endregion FadeÇÃä÷êîíËã`
 
@@ -82,7 +82,7 @@ void DrawBg::Title::Update()
 
 void DrawBg::Title::Draw()
 {
-	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::TATILE_BG), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::Texture::ID::TATILE_BG), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 }
 #pragma endregion TitleÇÃîwåiï`âÊ
 
@@ -104,6 +104,6 @@ void DrawBg::Game::Update()
 
 void DrawBg::Game::Draw()
 {
-	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::TextureID::GAME_BG), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::Texture::ID::GAME_BG), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 }
 #pragma endregion GameÇÃîwåiï`âÊ

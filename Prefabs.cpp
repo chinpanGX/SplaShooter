@@ -5,11 +5,13 @@
 
 ------------------------------------------------------------*/
 #include "Prefabs.h"
-#include "Loader.h"
+
+const unsigned int PrefabsBase::m_Maxid;
 
 #pragma region Prefabs_Texture_Func
 void Prefabs::Texture::Create(int size)
 {
+	m_Size = size;
 	for (int i = 0; i < size; i++)
 	{
 		m_Texture = new Loader::Texture[size];
@@ -31,7 +33,7 @@ void Prefabs::Texture::Load(Wrapper::DirectX11& dx)
 
 void Prefabs::Texture::Unload()
 {
-	for (int i = m_Id.size() -1; i >= 0; i--)
+	for (int i = m_Size -1; i >= 0; i--)
 	{
 		m_Texture[i].Unload();
 	}
@@ -47,6 +49,7 @@ ID3D11ShaderResourceView * Prefabs::Texture::GetTexture(unsigned int Id)
 #pragma region Prefabs_VertexShader_Func
 void Prefabs::VertexShader::Create(int size)
 {
+	m_Size = size;
 	for (int i = 0; i < size; i++)
 	{
 		m_VertexShader = new Loader::VertexShader[size];
@@ -66,7 +69,7 @@ void Prefabs::VertexShader::Load(Wrapper::DirectX11& dx)
 
 void Prefabs::VertexShader::Unload()
 {
-	for (int i = m_Id.size() -1; i >= 0; i--)
+	for (int i = m_Size -1; i >= 0; i--)
 	{
 		m_VertexShader[i].Unload();
 	}
@@ -80,6 +83,40 @@ ID3D11VertexShader * Prefabs::VertexShader::GetVertexShader(unsigned int Id)
 
 ID3D11InputLayout * Prefabs::VertexShader::GetInputLayout(unsigned int Id)
 {
-	return m_VertexShader[Id], GetInputLayout();
+	return m_VertexShader[Id].GetInputLayout();
 }
 #pragma endregion Prefabs_VertexShaderÉNÉâÉXÇÃä÷êîíËã`
+
+void Prefabs::PixelShader::Create(int size)
+{
+	m_Size = size;
+	for (int i = 0; i < size; i++)
+	{
+		m_PixelShader = new Loader::PixelShader[size];
+	}
+}
+
+void Prefabs::PixelShader::Destory()
+{
+	delete[] m_PixelShader;
+}
+
+void Prefabs::PixelShader::Load(Wrapper::DirectX11 & dx)
+{
+	Create(1);
+	m_Id[0] = m_PixelShader[0].Load(dx, "Asset/Shader/pixelShader.cso");
+}
+
+void Prefabs::PixelShader::Unload()
+{
+	for (int i = m_Size -1; i >= 0; i--)
+	{
+		m_PixelShader[i].Unload();
+	}
+	Destory();
+}
+
+ID3D11PixelShader * Prefabs::PixelShader::GetPixelShader(unsigned int Id)
+{
+	return m_PixelShader[Id].GetPixelShader();
+}
