@@ -11,6 +11,11 @@
 class TestField : public GameObject
 {
 private:
+	// シェーダー
+	//ID3D11VertexShader* m_VertexShader = NULL;
+	//ID3D11InputLayout*	m_InputLayout = NULL;
+	//ID3D11PixelShader*	m_PixelShader = NULL;
+
 	class Object3D* m_Object = NULL;
 	class Shader*   m_Shader = NULL;
 	Texture  m_Texture[2];

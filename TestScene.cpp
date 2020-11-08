@@ -59,3 +59,19 @@ void Test::TestMap1::Draw()
 	//g_Camera.Draw();
 	g_Field->Draw();
 }
+
+void Test::TestMap2::Init()
+{
+}
+
+void Test::TestMap2::Uninit()
+{
+}
+
+void Test::TestMap2::Update()
+{
+}
+
+void Test::TestMap2::Draw()
+{
+}

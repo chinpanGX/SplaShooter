@@ -144,6 +144,10 @@ namespace Wrapper
 		void SetCameraPosition(D3DXVECTOR3 CameraPosition);
 		void SetParameter(D3DXVECTOR4 Parameter);
 
+		// シェーダー生成
+		void CreateVertexShader(ID3D11VertexShader** VertexShader, ID3D11InputLayout** InputLayout, const char* FileName);
+		void CreatePixelShader(ID3D11PixelShader** PixelShader, const char* FileName);
+
 		ID3D11Device* GetDevice() { return m_Device; }
 		ID3D11DeviceContext* GetDeviceContext() { return m_ImmediateContext; }
 	};

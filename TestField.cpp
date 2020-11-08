@@ -34,11 +34,14 @@ void TestField::Init()
 	m_Object = new Object3D(dx,vertex);
 	// シェーダーの読み込み
 	// ↓画面真っ暗の原因
-	m_Shader = new Shader("Asset/Shader/MappingVS.cso", "Asset/Shader/MappingPS.cso");
+	//m_Shader = new Shader("Asset/Shader/MappingVS.cso", "Asset/Shader/MappingPS.cso");
 	// ↓床だけ真っ暗
 	//m_Shader = new Shader("Asset/Shader/vertexShader.cso", "Asset/Shader/MappingPS.cso");
 
-	//m_Shader = new Shader("vertexShader.cso", "pixelShader.cso");
+	m_Shader = new Shader("vertexShader.cso", "pixelShader.cso");
+
+	//dx.CreateVertexShader(&m_VertexShader, &m_InputLayout, "Asset/Shader/MappingVS.cso");
+	//dx.CreatePixelShader(&m_PixelShader, "Asset/Shader/MappingPS.cso");
 
 	// テクスチャの読み込み
 	m_TextureStorge[1] = m_Texture[0].Load(dx, "Asset/Texture/field004.jpg");
@@ -53,9 +56,9 @@ void TestField::Uninit()
 {
 	for (int i = 0; i < 2; i++)
 	{
-		m_Texture[i].Unload(m_TextureStorge[i]);
+//		m_Texture[i].Unload(m_TextureStorge[i]);
 	}
-	delete m_Shader;
+	//delete m_Shader;
 	delete m_Object;
 }
 
@@ -68,10 +71,13 @@ void TestField::Draw()
 	auto & dx = Wrapper::DirectX11::Instance();
 	// シェーダーの描画
 	m_Shader->Draw();
+	//dx.GetDeviceContext()->IASetInputLayout(m_InputLayout);
+	//dx.GetDeviceContext()->VSSetShader(m_VertexShader, NULL, 0);
+	//dx.GetDeviceContext()->PSSetShader(m_PixelShader, NULL, 0);
 	// テクスチャを設定
 	for (int i = 0; i < 2; i++)
 	{
-		m_Object->SetTexture(dx, i, m_Texture[i].SetTexture(m_TextureStorge[i]));
+		//m_Object->SetTexture(dx, i, m_Texture[i].SetTexture(m_TextureStorge[i]));
 	}
 	// 描画
 	m_Object->Draw(dx,m_Position,m_Position,m_Scale);

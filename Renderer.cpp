@@ -120,20 +120,20 @@ void Sprite2D::Sprite::Draw(Wrapper::DirectX11& dx, ID3D11ShaderResourceView * t
 void Sprite2D::Renderer::Load(const char * Filename)
 {
 	m_Sprite.Init(m_dx);
-	m_Storage = m_Texture.Load(m_dx, Filename);
+	//m_Storage = m_Texture.Load(m_dx, Filename);
 }
 
 // アンロード
 void Sprite2D::Renderer::Unload()
 {
 	m_Sprite.Uninit();
-	m_Texture.Unload(m_Storage);
+	//m_Texture.Unload(m_Storage);
 }
 
 // 描画
 void Sprite2D::Renderer::Draw(D3DXVECTOR2 drawPosition, D3DXVECTOR2 drawSize, D3DXVECTOR2 texUpLeft, D3DXVECTOR2 texDownRight, D3DXCOLOR color)
 {
-	m_Sprite.Draw(m_dx, m_Texture.SetTexture(m_Storage), drawPosition, drawSize, texUpLeft, texDownRight, color);
+	//m_Sprite.Draw(m_dx, m_Texture.SetTexture(m_Storage), drawPosition, drawSize, texUpLeft, texDownRight, color);
 }
 
 // α値のセット
