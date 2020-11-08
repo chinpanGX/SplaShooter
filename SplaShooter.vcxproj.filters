@@ -92,13 +92,7 @@
     <ClCompile Include="TestScene.cpp">
       <Filter>ソース ファイル\Test</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="SettingShader.cpp">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
       <Filter>ソース ファイル\Game\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="Object3D.cpp">
@@ -111,6 +105,9 @@
       <Filter>ソース ファイル\Game\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Prefabs.cpp">
+      <Filter>ソース ファイル\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Loader.cpp">
       <Filter>ソース ファイル\Game\Engine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -131,12 +128,6 @@
       <Filter>ソース ファイル\Game\3D</Filter>
     </ClInclude>
     <ClInclude Include="SettingShader.h">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
       <Filter>ソース ファイル\Game\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="TestField.h">
@@ -172,13 +163,13 @@
     <ClInclude Include="GameObject.h">
       <Filter>ソース ファイル\Game\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>ソース ファイル\Game\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>ソース ファイル\Game\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Prefabs.h">
+      <Filter>ソース ファイル\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader.h">
       <Filter>ソース ファイル\Game\Engine</Filter>
     </ClInclude>
   </ItemGroup>

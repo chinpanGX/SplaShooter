@@ -6,12 +6,13 @@
 ------------------------------------------------------------*/
 #include "Engine.h"
 
-Prefabs::PrefabsTexture* Engine::ObjectPool::m_Texture;
+Prefabs::Texture* Engine::ObjectPool::m_Texture;
 
 void Engine::ObjectPool::Init()
 {
-	m_Texture = new Prefabs::PrefabsTexture;
-	m_Texture->Load();
+	auto & dx = Wrapper::DirectX11::Instance();
+	m_Texture = new Prefabs::Texture;
+	m_Texture->Load(dx);
 }
 
 void Engine::ObjectPool::Uninit()

@@ -16,7 +16,7 @@ namespace Engine
 	class ObjectPool
 	{
 	private:
-		static Prefabs::PrefabsTexture* m_Texture;
+		static Prefabs::Texture* m_Texture;
 	public:
 		static void Init();
 		static void Uninit();
