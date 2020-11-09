@@ -50,10 +50,11 @@ void TestField::Update()
 void TestField::Draw()
 {
 	auto & dx = Wrapper::DirectX11::Instance();
-	Engine::ObjectPool::SetTexture(dx, 0, Prefabs::Texture::ID::FIELD);
-	Engine::ObjectPool::SetTexture(dx, 1, Prefabs::Texture::ID::WAFFURU);
 	Engine::ObjectPool::SetInputLayout(dx, Prefabs::VertexShader::MAPPING);
 	Engine::ObjectPool::SetVertexShader(dx, Prefabs::VertexShader::MAPPING);
 	Engine::ObjectPool::SetPixelShader(dx, Prefabs::PixelShader::MAPPING);
-	m_Object->Draw(dx,m_Position,m_Position,m_Scale);
+	m_Object->Set(dx, m_Position, m_Rotation, m_Scale);
+	Engine::ObjectPool::SetTexture(dx, 0, Prefabs::Texture::ID::FIELD);
+	Engine::ObjectPool::SetTexture(dx, 1, Prefabs::Texture::ID::WAFFURU);
+	m_Object->DrawPolygon(dx);
 }
