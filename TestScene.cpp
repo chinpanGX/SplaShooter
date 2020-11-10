@@ -22,6 +22,14 @@ void ChangeScene::TestMap1()
 	}
 }
 
+void ChangeScene::TestMap2()
+{
+	if (KeyBoard::IsTrigger(DIK_2))
+	{
+		Manager::SetScene<Test::TestMap2>();
+	}
+}
+
 TestField* g_Field;
 
 void Test::TestMap1::Init()
@@ -50,4 +58,20 @@ void Test::TestMap1::Draw()
 	Scene::Draw();
 	//g_Camera.Draw();
 	g_Field->Draw();
+}
+
+void Test::TestMap2::Init()
+{
+}
+
+void Test::TestMap2::Uninit()
+{
+}
+
+void Test::TestMap2::Update()
+{
+}
+
+void Test::TestMap2::Draw()
+{
 }

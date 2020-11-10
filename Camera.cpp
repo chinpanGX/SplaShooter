@@ -24,13 +24,14 @@ void Camera::Draw()
 	auto& app = Application::Instance();
 	float x = (float)app.GetWindowSize().cx;
 	float y = (float)app.GetWindowSize().cy;
-	D3DXMATRIX view, projection;
 	
 	// ビューマトリクス設定
+	D3DXMATRIX view;
 	D3DXMatrixLookAtLH(&view, &m_Position, &m_Target, &D3DXVECTOR3(0.0f, 1.0f, 0.0f));
 	dx.SetViewMatrix(&view);
 	
 	// プロジェクション設定
+	D3DXMATRIX projection;
 	D3DXMatrixPerspectiveFovLH(&projection, 1.0f, x / y, 1.0f, 1000.0f);
 	dx.SetProjectionMatrix(&projection);
 	dx.SetCameraPosition(m_Position);

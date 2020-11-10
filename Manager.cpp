@@ -9,6 +9,8 @@
 #include "Bg.h"
 #include "Scene.h"
 #include "TestPlayer.h"
+#include "TestScene.h"
+#include "Engine.h"
 
 // スタティック変数
 Scene* Manager::m_Scene = NULL;
@@ -21,6 +23,7 @@ void Manager::Init()
 {
 	srand((unsigned int)time(NULL));
 	m_dx.Init();
+	Engine::ObjectPool::Init();
 	m_Fade.Init();
 	SetScene<GameScene::Title>();
 	m_Fade.m_FadeState = m_Fade.FADE_IN;
@@ -32,6 +35,7 @@ void Manager::Uninit()
 {
 	m_Scene->Uninit();
 	delete m_Scene;
+	Engine::ObjectPool::Uninit();
 	m_dx.Uninit();
 }
 
