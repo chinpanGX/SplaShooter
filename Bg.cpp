@@ -8,6 +8,7 @@
 #include "Manager.h"
 #include "Application.h"
 #include "Fps.h"
+#include "Engine.h"
 
 // スクリーンサイズのゲッター
 D3DXVECTOR2 Bg::GetScrren()
@@ -24,13 +25,13 @@ Scene* Fade::m_NextScene = NULL; // スタティック変数
 
 void Fade::Init()
 {
-	m_Sprite.Load("asset/Texture/black.png");
+	m_Sprite.Init();
 	m_FadeTime = 0.5f;
 }
 
 void Fade::Uninit()
 {
-	m_Sprite.Unload();
+	
 }
 
 void Fade::Update()
@@ -57,19 +58,21 @@ void Fade::Update()
 
 void Fade::Draw()
 {
-	m_Sprite.Draw(Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Alpha));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::Texture::ID::FADE) ,Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Alpha));
 }
 #pragma endregion Fadeの関数定義
 
 #pragma region Title_Func
 void DrawBg::Title::Init()
 {
-	m_Sprite.Load("Asset/Texture/Title.png");
+	auto & dx = Wrapper::DirectX11::Instance();
+	m_Sprite.Init();
 }
 
 void DrawBg::Title::Uninit()
 {
-	m_Sprite.Unload();
+	//m_Sprite.Unload();
+	m_Sprite.Uninit();
 }
 
 void DrawBg::Title::Update()
@@ -79,19 +82,19 @@ void DrawBg::Title::Update()
 
 void DrawBg::Title::Draw()
 {
-	m_Sprite.Draw(Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::Texture::ID::TATILE_BG), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 }
 #pragma endregion Titleの背景描画
 
 #pragma region Game_Func
 void DrawBg::Game::Init()
 {
-	m_Sprite.Load("Asset/Texture/Game.png");
+	m_Sprite.Init();
 }
 
 void DrawBg::Game::Uninit()
 {
-	m_Sprite.Unload();
+	m_Sprite.Uninit();
 }
 
 void DrawBg::Game::Update()
@@ -101,6 +104,6 @@ void DrawBg::Game::Update()
 
 void DrawBg::Game::Draw()
 {
-	m_Sprite.Draw(Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::Texture::ID::GAME_BG), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 }
 #pragma endregion Gameの背景描画

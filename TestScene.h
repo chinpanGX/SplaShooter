@@ -12,6 +12,7 @@ struct ChangeScene
 {
 	static void ReturnTitle(); // タイトルに戻る
 	static void TestMap1(); // １
+	static void TestMap2(); // 2
 };
 
 
@@ -25,6 +26,15 @@ namespace Test
 
 	// テストシーン１
 	class TestMap1 : public Scene
+	{
+	public:
+		void Init()override;
+		void Uninit()override;
+		void Update()override;
+		void Draw()override;
+	};
+
+	class TestMap2 : public TestMap1
 	{
 	public:
 		void Init()override;

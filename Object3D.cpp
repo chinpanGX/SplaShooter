@@ -27,13 +27,7 @@ Object3D::~Object3D()
 	m_VertexBuffer = NULL;
 }
 
-void Object3D::SetTexture(Wrapper::DirectX11 & instance, int Slot, ID3D11ShaderResourceView * Texture)
-{
-	// テクスチャ設定
-	instance.GetDeviceContext()->PSSetShaderResources(Slot, 1, &Texture);
-}
-
-void Object3D::Draw(Wrapper::DirectX11 & instance, D3DXVECTOR3 Position, D3DXVECTOR3 Rotation, D3DXVECTOR3 Scale)
+void Object3D::Set(Wrapper::DirectX11 & dx, D3DXVECTOR3 Position, D3DXVECTOR3 Rotation, D3DXVECTOR3 Scale)
 {
 	// マトリクス設定
 	D3DXMATRIX world, scale, rot, trans;
@@ -41,22 +35,23 @@ void Object3D::Draw(Wrapper::DirectX11 & instance, D3DXVECTOR3 Position, D3DXVEC
 	D3DXMatrixRotationYawPitchRoll(&rot, Rotation.y, Rotation.x, Rotation.z);
 	D3DXMatrixTranslation(&trans, Position.x, Position.y, Position.z);
 	world = scale * rot * trans;
-	instance.SetWorldMatrix(&world);
-
+	dx.SetWorldMatrix(&world);
 	// 頂点バッファ設定
 	UINT stride = sizeof(Wrapper::VERTEX_3D);
 	UINT offset = 0;
-	instance.GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
-
+	dx.GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
 	// マテリアル設定
 	Wrapper::MATERIAL material;
 	ZeroMemory(&material, sizeof(material));
 	material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	instance.SetMaterial(material);
+	dx.SetMaterial(material);
+}
 
+void Object3D::DrawPolygon(Wrapper::DirectX11 & dx)
+{
 	// プリミティブトポロジ設定
-	instance.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+	dx.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	// ポリゴン描画
-	instance.GetDeviceContext()->Draw(4, 0);
+	dx.GetDeviceContext()->Draw(4, 0);
 }

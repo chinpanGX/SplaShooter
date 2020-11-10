@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="リソース ファイル">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -73,6 +69,9 @@
     <Filter Include="ヘッダー ファイル\Game\Sound">
       <UniqueIdentifier>{fa703c77-45d3-4a4f-9af1-367322f25dfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game\Engine">
+      <UniqueIdentifier>{7bdafe69-6b0c-4eeb-8ac6-38762f38210d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -117,13 +116,7 @@
     <ClCompile Include="TestScene.cpp">
       <Filter>ソース ファイル\Test</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="SettingShader.cpp">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
       <Filter>ソース ファイル\Game\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="Object3D.cpp">
@@ -132,8 +125,19 @@
     <ClCompile Include="TestField.cpp">
       <Filter>ソース ファイル\Test</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Input.cpp">
       <Filter>ソース ファイル\System</Filter>
+=======
+    <ClCompile Include="Engine.cpp">
+      <Filter>ソース ファイル\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Prefabs.cpp">
+      <Filter>ソース ファイル\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Loader.cpp">
+      <Filter>ソース ファイル\Game\Engine</Filter>
+>>>>>>> bcb5fd99f6e41fd5d46d781c1365f287cbbef2e8
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +162,7 @@
     <ClInclude Include="SettingShader.h">
       <Filter>ヘッダー ファイル\Game\Rendering</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Shader.h">
       <Filter>ヘッダー ファイル\Game\Rendering</Filter>
     </ClInclude>
@@ -173,6 +178,8 @@
     <ClInclude Include="Audio.h">
       <Filter>ヘッダー ファイル\Game\Sound</Filter>
     </ClInclude>
+=======
+>>>>>>> bcb5fd99f6e41fd5d46d781c1365f287cbbef2e8
     <ClInclude Include="TestField.h">
       <Filter>ヘッダー ファイル\Test</Filter>
     </ClInclude>
@@ -197,22 +204,15 @@
     <ClInclude Include="Input.h">
       <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="pixelShader.cso">
-      <Filter>リソース ファイル\Shader\Pixel</Filter>
-    </None>
-    <None Include="vertexShader.cso">
-      <Filter>リソース ファイル\Shader\Vertex</Filter>
-    </None>
-    <None Include="waterVS.cso">
-      <Filter>リソース ファイル\Shader\Vertex</Filter>
-    </None>
-    <None Include="waterPS.cso">
-      <Filter>リソース ファイル\Shader\Pixel</Filter>
-    </None>
-    <None Include="MappingVS.cso" />
-    <None Include="MappingPS.cso" />
+    <ClInclude Include="Engine.h">
+      <Filter>ソース ファイル\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Prefabs.h">
+      <Filter>ソース ファイル\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader.h">
+      <Filter>ソース ファイル\Game\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelShader.hlsl">
@@ -227,6 +227,7 @@
     <FxCompile Include="waterVS.hlsl">
       <Filter>リソース ファイル\Shader\Vertex</Filter>
     </FxCompile>
+<<<<<<< HEAD
     <FxCompile Include="MappingPS.hlsl">
       <Filter>リソース ファイル\Shader\Pixel</Filter>
     </FxCompile>
@@ -236,6 +237,11 @@
     <FxCompile Include="common.hlsl">
       <Filter>リソース ファイル</Filter>
     </FxCompile>
+=======
+    <FxCompile Include="Common.hlsl" />
+    <FxCompile Include="MappingVS.hlsl" />
+    <FxCompile Include="MappingPS.hlsl" />
+>>>>>>> bcb5fd99f6e41fd5d46d781c1365f287cbbef2e8
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDoList.txt" />

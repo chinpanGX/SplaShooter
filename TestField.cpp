@@ -1,6 +1,6 @@
 #include "TestField.h"
-#include "Shader.h"
 #include "Object3D.h"
+#include "Engine.h"
 
 void TestField::CreateVertex(Wrapper::VERTEX_3D Vertex[4])
 {
@@ -32,6 +32,7 @@ void TestField::Init()
 	CreateVertex(vertex);
 	// ↓インスタンス生成
 	m_Object = new Object3D(dx,vertex);
+<<<<<<< HEAD
 	// シェーダーの読み込み
 	// ↓画面真っ暗の原因
 	m_Shader = new Shader("MappingVS.cso", "MappingPS.cso");
@@ -40,6 +41,8 @@ void TestField::Init()
 	// テクスチャの読み込み
 	m_TextureStorge[1] = m_Texture[0].Load(dx, "Asset/Texture/field004.jpg");
 	m_TextureStorge[1] = m_Texture[1].Load(dx, "Asset/Texture/waffuru.tif");
+=======
+>>>>>>> bcb5fd99f6e41fd5d46d781c1365f287cbbef2e8
 
 	m_Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -48,11 +51,6 @@ void TestField::Init()
 
 void TestField::Uninit()
 {
-	for (int i = 0; i < 2; i++)
-	{
-		m_Texture[i].Unload(m_TextureStorge[i]);
-	}
-	delete m_Shader;
 	delete m_Object;
 }
 
@@ -63,13 +61,11 @@ void TestField::Update()
 void TestField::Draw()
 {
 	auto & dx = Wrapper::DirectX11::Instance();
-	// シェーダーの描画
-	m_Shader->Draw();
-	// テクスチャを設定
-	for (int i = 0; i < 2; i++)
-	{
-		m_Object->SetTexture(dx, i, m_Texture[i].SetTexture(m_TextureStorge[i]));
-	}
-	// 描画
-	m_Object->Draw(dx,m_Position,m_Position,m_Scale);
+	Engine::ObjectPool::SetInputLayout(dx, Prefabs::VertexShader::MAPPING);
+	Engine::ObjectPool::SetVertexShader(dx, Prefabs::VertexShader::MAPPING);
+	Engine::ObjectPool::SetPixelShader(dx, Prefabs::PixelShader::MAPPING);
+	m_Object->Set(dx, m_Position, m_Rotation, m_Scale);
+	Engine::ObjectPool::SetTexture(dx, 0, Prefabs::Texture::ID::FIELD);
+	Engine::ObjectPool::SetTexture(dx, 1, Prefabs::Texture::ID::WAFFURU);
+	m_Object->DrawPolygon(dx);
 }
