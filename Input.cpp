@@ -28,7 +28,7 @@ enum KEY : int
 	KEY_D = 'D',
 	KEY_ENTER = VK_RETURN,
 	KEY_SPACE = VK_SPACE,
-	KEY_MAX = 6;
+	KEY_MAX = 6
 };
 
 template<typename T>
@@ -58,7 +58,7 @@ void Input::Update()
 	GetKeyboardState(m_KeyState);
 
 	//現在の使用するキーの状態を取得して配列に入れる
-	for (int i = 0; i < KEY_MAX * 3; i+=3)
+	for (int i = 0; i < KEY_MAX * 3; i += 3)
 	{
 		m_IsKey[i] = GetKeyTrigger(key);
 		m_IsKey[i + 1] = GetKeyPress(key);

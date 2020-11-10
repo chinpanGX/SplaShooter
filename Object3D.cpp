@@ -4,6 +4,7 @@
 	Author : èoçá„ƒëæ
 
 ------------------------------------------------------------*/
+#include "DirectX11.h"
 #include "Object3D.h"
 
 Object3D::Object3D(Wrapper::DirectX11& dx, Wrapper::VERTEX_3D Vertex[4])

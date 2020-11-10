@@ -110,6 +110,9 @@
     <ClCompile Include="Loader.cpp">
       <Filter>ソース ファイル\Game\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Effect.h">
@@ -171,6 +174,9 @@
     </ClInclude>
     <ClInclude Include="Loader.h">
       <Filter>ソース ファイル\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>ソース ファイル\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

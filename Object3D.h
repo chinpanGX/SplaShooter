@@ -6,7 +6,7 @@
 
 ------------------------------------------------------------*/
 #pragma once
-#include "DirectX11.h"
+//#include "DirectX11.h"
 
 class Object3D
 {
