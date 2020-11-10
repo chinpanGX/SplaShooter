@@ -69,8 +69,7 @@ void Wrapper::DirectX11::Init()
 	dsvd.Flags = 0;
 	m_Device->CreateDepthStencilView(depthTexture, &dsvd, &m_DepthStencilView);
 	m_ImmediateContext->OMSetRenderTargets(1, &m_RenderTargetView, m_DepthStencilView);
-
-
+	
 	// ビューポート設定
 	D3D11_VIEWPORT vp;
 	vp.Width = (FLOAT)winsize.cx;
