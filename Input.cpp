@@ -28,7 +28,7 @@ enum KEY : int
 	KEY_D = 'D',
 	KEY_ENTER = VK_RETURN,
 	KEY_SPACE = VK_SPACE,
-	KEY_MAX = 6;
+	KEY_MAX = 6
 };
 
 template<typename T>

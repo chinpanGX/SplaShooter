@@ -1,12 +1,13 @@
 /*-----------------------------------------------------------
 
-	[Object3D.cpp]
+	[Polygon3D.cpp]
 	Author : 出合翔太
 
 ------------------------------------------------------------*/
-#include "Object3D.h"
+#include "DirectX11.h"
+#include "Polygon3D.h"
 
-Object3D::Object3D(Wrapper::DirectX11& dx, Wrapper::VERTEX_3D Vertex[4])
+Polygon3D::Polygon3D(Wrapper::DirectX11& dx, Wrapper::VERTEX_3D Vertex[4])
 {
 	// 頂点バッファ生成
 	D3D11_BUFFER_DESC bd;
@@ -21,13 +22,13 @@ Object3D::Object3D(Wrapper::DirectX11& dx, Wrapper::VERTEX_3D Vertex[4])
 	dx.GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
 }
 
-Object3D::~Object3D()
+Polygon3D::~Polygon3D()
 {
 	m_VertexBuffer->Release();
 	m_VertexBuffer = NULL;
 }
 
-void Object3D::Set(Wrapper::DirectX11 & dx, D3DXVECTOR3 Position, D3DXVECTOR3 Rotation, D3DXVECTOR3 Scale)
+void Polygon3D::Set(Wrapper::DirectX11 & dx, D3DXVECTOR3 Position, D3DXVECTOR3 Rotation, D3DXVECTOR3 Scale)
 {
 	// マトリクス設定
 	D3DXMATRIX world, scale, rot, trans;
@@ -47,7 +48,7 @@ void Object3D::Set(Wrapper::DirectX11 & dx, D3DXVECTOR3 Position, D3DXVECTOR3 Ro
 	dx.SetMaterial(material);
 }
 
-void Object3D::DrawPolygon(Wrapper::DirectX11 & dx)
+void Polygon3D::DrawPolygon(Wrapper::DirectX11 & dx)
 {
 	// プリミティブトポロジ設定
 	dx.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);

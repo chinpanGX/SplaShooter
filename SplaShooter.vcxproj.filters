@@ -95,9 +95,6 @@
     <ClCompile Include="SettingShader.cpp">
       <Filter>ソース ファイル\Game\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="Object3D.cpp">
-      <Filter>ソース ファイル\Game\3D</Filter>
-    </ClCompile>
     <ClCompile Include="TestField.cpp">
       <Filter>ソース ファイル\Test</Filter>
     </ClCompile>
@@ -109,6 +106,15 @@
     </ClCompile>
     <ClCompile Include="Loader.cpp">
       <Filter>ソース ファイル\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="field.cpp">
+      <Filter>ソース ファイル\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="Polygon.cpp">
+      <Filter>ソース ファイル\Game\3D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +128,6 @@
       <Filter>ソース ファイル\Game\2D</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>ソース ファイル\Game\3D</Filter>
-    </ClInclude>
-    <ClInclude Include="Object3D.h">
       <Filter>ソース ファイル\Game\3D</Filter>
     </ClInclude>
     <ClInclude Include="SettingShader.h">
@@ -172,6 +175,15 @@
     <ClInclude Include="Loader.h">
       <Filter>ソース ファイル\Game\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>ソース ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="field.h">
+      <Filter>ソース ファイル\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Polygon3D.h">
+      <Filter>ソース ファイル\Game\3D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelShader.hlsl">
@@ -189,9 +201,15 @@
     <FxCompile Include="Common.hlsl" />
     <FxCompile Include="MappingVS.hlsl" />
     <FxCompile Include="MappingPS.hlsl" />
+    <FxCompile Include="normalMappingPS.hlsl" />
+    <FxCompile Include="normalMappingVS.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDoList.txt" />
     <Text Include="memo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="normalMappingPS.cso" />
+    <None Include="normalMappingVS.cso" />
   </ItemGroup>
 </Project>
