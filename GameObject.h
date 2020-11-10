@@ -106,5 +106,27 @@ public:
 		}
 		return vector;
 	}
+
+	//イベント駆動型で使うキー
+	virtual void OnTriggerW(){}
+	virtual void OnTriggerA(){}
+	virtual void OnTriggerS(){}
+	virtual void OnTriggerD(){}
+	virtual void OnTriggerEnter(){}
+	virtual void OnTriggerSpace(){}
+
+	virtual void OnPressW(){}
+	virtual void OnPressA(){}
+	virtual void OnPressS(){}
+	virtual void OnPressD(){}
+	virtual void OnPressEnter(){}
+	virtual void OnPressSpace(){}
+
+	virtual void OnReleaseW(){}
+	virtual void OnReleaseA(){}
+	virtual void OnReleaseS(){}
+	virtual void OnReleaseD(){}
+	virtual void OnReleaseEnter(){}
+	virtual void OnReleaseSpace(){}
 };
 

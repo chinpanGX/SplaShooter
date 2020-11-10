@@ -8,6 +8,7 @@
 #include "InputDevice.h"
 #include "Manager.h"
 #include "Fps.h"
+#include "Input.h"
 
 #pragma region Application_Func
 // ウィンドウプロシージャ
@@ -87,6 +88,7 @@ bool Application::Init(HINSTANCE hInstance)
 	auto result = CoInitializeEx(0, COINITBASE_MULTITHREADED);
 	CreateGameWindow(m_hwnd, m_WindowClass); // ゲームウィンドウ
 	InputDevice::Init(hInstance, m_hwnd);	 // コントローラの初期化
+	//Input::GetInstance().Init();
 	return true;
 }
 

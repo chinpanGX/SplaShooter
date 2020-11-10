@@ -1,6 +1,6 @@
 #include "Common.hlsl"
 
-void main(in VS_IN In, out PS_IN Out)
+void main(in VS_IN In, out VS_IN Out)
 {
 	matrix wvp;
 	wvp = mul(World, View);
@@ -12,7 +12,7 @@ void main(in VS_IN In, out PS_IN Out)
 	worldNormal = normalize(worldNormal);
 
 	Out.Position = mul(In.Position, wvp);
-	Out.WorldPosition = mul(In.Position, World);
+	//Out.WorldPosition = mul(In.Position, World);
 	Out.Normal = worldNormal;
 	Out.Diffuse = In.Diffuse;
 	Out.TexCoord = In.TexCoord;
