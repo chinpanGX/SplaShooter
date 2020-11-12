@@ -12,6 +12,7 @@
 #include "Camera.h"
 #include "SettingShader.h"
 #include "TestScene.h"
+#include "TestField.h"
 
 // タイトルシーン
 #pragma region GameScene_Title_Func
@@ -48,8 +49,9 @@ void GameScene::Title::Draw()
 void GameScene::Game::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
-	AddGameObject<SettingShader>(LAYER_3D);
-	AddGameObject<DrawBg::Game>(LAYER_2D_BG);
+	//AddGameObject<SettingShader>(LAYER_3D);
+	//AddGameObject<DrawBg::Game>(LAYER_2D_BG);
+	AddGameObject<TestField>(LAYER_3D);
 }
 
 void GameScene::Game::Uninit()

@@ -62,8 +62,8 @@ void CField::Init()
 											NULL);
 	assert( m_TextureNormal );
 
-	dx.CreateVertexShader(&m_VertexShader, &m_VertexLayout, "normalMappingVS.cso");
-	dx.CreatePixelShader(&m_PixelShader, "normalMappingPS.cso");
+	dx.CreateVertexShader(&m_VertexShader, &m_VertexLayout, "Asset/Shader/MappingVS.cso");
+	dx.CreatePixelShader(&m_PixelShader, "Asset/Shader/MappingPS.cso");
 
 	m_Position = D3DXVECTOR3( 0.0f, 0.0f, 0.0f );
 	m_Rotation = D3DXVECTOR3( 0.0f, 0.0f, 0.0f );

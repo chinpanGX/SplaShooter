@@ -1,5 +1,5 @@
 #include "TestField.h"
-#include "Object3D.h"
+#include "Polygon3D.h"
 #include "Engine.h"
 
 void TestField::CreateVertex(Wrapper::VERTEX_3D Vertex[4])
@@ -30,8 +30,18 @@ void TestField::Init()
 	auto& dx = Wrapper::DirectX11::Instance();
 	Wrapper::VERTEX_3D vertex[4];
 	CreateVertex(vertex);
-	// ↓インスタンス生成
-	m_Object = new Object3D(dx,vertex);
+	
+	// 頂点バッファ生成
+	D3D11_BUFFER_DESC bd;
+	ZeroMemory(&bd, sizeof(bd));
+	bd.Usage = D3D11_USAGE_DEFAULT;
+	bd.ByteWidth = sizeof(Wrapper::VERTEX_3D) * 4;
+	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bd.CPUAccessFlags = 0;
+	D3D11_SUBRESOURCE_DATA sd;
+	ZeroMemory(&sd, sizeof(sd));
+	sd.pSysMem = vertex;
+	dx.GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
 
 	m_Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -40,7 +50,7 @@ void TestField::Init()
 
 void TestField::Uninit()
 {
-	delete m_Object;
+	m_VertexBuffer->Release();
 }
 
 void TestField::Update()
@@ -53,8 +63,30 @@ void TestField::Draw()
 	Engine::ObjectPool::SetInputLayout(dx, Prefabs::VertexShader::MAPPING);
 	Engine::ObjectPool::SetVertexShader(dx, Prefabs::VertexShader::MAPPING);
 	Engine::ObjectPool::SetPixelShader(dx, Prefabs::PixelShader::MAPPING);
-	m_Object->Set(dx, m_Position, m_Rotation, m_Scale);
+
+	// マトリクス設定
+	D3DXMATRIX world, scale, rot, trans;
+	D3DXMatrixScaling(&scale, m_Scale.x, m_Scale.y, m_Scale.z);
+	D3DXMatrixRotationYawPitchRoll(&rot, m_Rotation.y, m_Rotation.x, m_Rotation.z);
+	D3DXMatrixTranslation(&trans, m_Position.x, m_Position.y, m_Position.z);
+	world = scale * rot * trans;
+	dx.SetWorldMatrix(&world);
+	// 頂点バッファ設定
+	UINT stride = sizeof(Wrapper::VERTEX_3D);
+	UINT offset = 0;
+	dx.GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
+	// マテリアル設定
+	Wrapper::MATERIAL material;
+	ZeroMemory(&material, sizeof(material));
+	material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	dx.SetMaterial(material);
+
 	Engine::ObjectPool::SetTexture(dx, 0, Prefabs::Texture::ID::FIELD);
 	Engine::ObjectPool::SetTexture(dx, 1, Prefabs::Texture::ID::WAFFURU);
-	m_Object->DrawPolygon(dx);
+	
+	// プリミティブトポロジ設定
+	dx.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+
+	// ポリゴン描画
+	dx.GetDeviceContext()->Draw(4, 0);
 }

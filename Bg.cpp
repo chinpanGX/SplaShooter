@@ -44,6 +44,7 @@ void Fade::Update()
 		{
 			Manager::ChangeScene(m_NextScene);
 			m_FadeState = FADE_IN;
+			m_Alpha = 1.0f;
 		}
 		break;
 	case FADE_IN:
@@ -51,6 +52,7 @@ void Fade::Update()
 		if (m_Alpha < 0.0f)
 		{
 			m_FadeState = FADE_NONE;
+			m_Alpha = 0;
 		}
 		break;
 	}
