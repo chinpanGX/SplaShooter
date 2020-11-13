@@ -39,9 +39,6 @@
     <Filter Include="ソース ファイル\Test">
       <UniqueIdentifier>{45d24c2d-3bbd-4743-a101-b068babb49d9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Game\Rendering">
-      <UniqueIdentifier>{2ee51e82-076a-4d91-8d2a-07c716ceed65}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Game\Base">
       <UniqueIdentifier>{dc70d767-6f92-4ed9-8e6f-3d42b184b4f2}</UniqueIdentifier>
     </Filter>
@@ -92,9 +89,6 @@
     <ClCompile Include="TestScene.cpp">
       <Filter>ソース ファイル\Test</Filter>
     </ClCompile>
-    <ClCompile Include="SettingShader.cpp">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="TestField.cpp">
       <Filter>ソース ファイル\Test</Filter>
     </ClCompile>
@@ -113,9 +107,6 @@
     <ClCompile Include="Polygon3D.cpp">
       <Filter>ソース ファイル\Game\3D</Filter>
     </ClCompile>
-    <ClCompile Include="field.cpp">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Effect.h">
@@ -129,9 +120,6 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>ソース ファイル\Game\3D</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingShader.h">
-      <Filter>ソース ファイル\Game\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="TestField.h">
       <Filter>ソース ファイル\Test</Filter>
@@ -180,9 +168,6 @@
     </ClInclude>
     <ClInclude Include="Polygon3D.h">
       <Filter>ソース ファイル\Game\3D</Filter>
-    </ClInclude>
-    <ClInclude Include="field.h">
-      <Filter>ソース ファイル\Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

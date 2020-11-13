@@ -5,6 +5,7 @@
 
 ------------------------------------------------------------*/
 #include "Renderer.h"
+#include "Engine.h"
 
 #pragma region Define_Sprite_Func
 void Sprite2D::Sprite::Init(Wrapper::DirectX11& dx)
@@ -85,6 +86,11 @@ void Sprite2D::Sprite::Draw(Wrapper::DirectX11& dx, ID3D11ShaderResourceView * t
 	vertex[3].TexCoord = texDownRight;
 
 	dx.GetDeviceContext()->Unmap(m_VtxBuffer, 0);
+
+	// シェーダーの設定
+	Engine::ObjectPool::SetInputLayout(dx, Prefabs::VertexShader::DEFAULT);
+	Engine::ObjectPool::SetVertexShader(dx, Prefabs::VertexShader::DEFAULT);
+	Engine::ObjectPool::SetPixelShader(dx, Prefabs::PixelShader::DEFAULT);
 
 	//マトリクス設定
 	dx.SetWorldViewProjection2D();

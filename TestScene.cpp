@@ -30,16 +30,10 @@ void ChangeScene::TestMap2()
 	}
 }
 
-TestField *g_Field;
-
 void Test::TestMap1::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
-	//AddGameObject<TestPlayer>(LAYER_3D);
-	//ddGameObject<TestField>(LAYER_3D);
-	//g_Camera.Init();
-	g_Field = new TestField;
-	g_Field->Init();
+	AddGameObject<TestField>(LAYER_3D);
 }
 
 void Test::TestMap1::Uninit()
@@ -56,7 +50,6 @@ void Test::TestMap1::Update()
 void Test::TestMap1::Draw()
 {
 	Scene::Draw();
-	g_Field->Draw();
 }
 
 void Test::TestMap2::Init()
