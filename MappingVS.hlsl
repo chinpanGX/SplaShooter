@@ -10,7 +10,7 @@ void main(in VS_IN In, out VS_IN Out)
 	normal = float4(In.Normal.xyz, 0.0);
 	worldNormal = mul(normal, World);
 	worldNormal = normalize(worldNormal);
-
+    
 	Out.Position = mul(In.Position, wvp);
 	//Out.WorldPosition = mul(In.Position, World);
 	Out.Normal = worldNormal;
