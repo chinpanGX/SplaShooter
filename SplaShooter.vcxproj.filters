@@ -183,9 +183,15 @@
     <FxCompile Include="waterVS.hlsl">
       <Filter>リソース ファイル\Shader\Vertex</Filter>
     </FxCompile>
-    <FxCompile Include="Common.hlsl" />
-    <FxCompile Include="MappingVS.hlsl" />
-    <FxCompile Include="MappingPS.hlsl" />
+    <FxCompile Include="MappingPS.hlsl">
+      <Filter>リソース ファイル\Shader\Pixel</Filter>
+    </FxCompile>
+    <FxCompile Include="MappingVS.hlsl">
+      <Filter>リソース ファイル\Shader\Vertex</Filter>
+    </FxCompile>
+    <FxCompile Include="Common.hlsl">
+      <Filter>リソース ファイル\Shader</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDoList.txt" />
