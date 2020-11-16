@@ -5,7 +5,9 @@
 #include "Camera.h"
 #include "Effect.h"
 #include "TestField.h"
+#include "Test.h"
 
+// 画面遷移
 void ChangeScene::ReturnTitle()
 {
 	if (KeyBoard::IsTrigger(DIK_R))
@@ -30,6 +32,7 @@ void ChangeScene::TestMap2()
 	}
 }
 
+// テストマップ１
 void Test::TestMap1::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
@@ -52,18 +55,24 @@ void Test::TestMap1::Draw()
 	Scene::Draw();
 }
 
+// テストマップ２
 void Test::TestMap2::Init()
 {
+	AddGameObject<Camera>(LAYER_CAMERA);
+	AddGameObject<Test_Chinapan::Field>(LAYER_3D);
 }
 
 void Test::TestMap2::Uninit()
 {
+	TestMap1::Uninit();
 }
 
 void Test::TestMap2::Update()
 {
+	TestMap1::Update();
 }
 
 void Test::TestMap2::Draw()
 {
+	TestMap1::Draw();
 }

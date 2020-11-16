@@ -107,6 +107,9 @@
     <ClCompile Include="Polygon3D.cpp">
       <Filter>ソース ファイル\Game\3D</Filter>
     </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>ソース ファイル\Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Effect.h">
@@ -169,6 +172,9 @@
     <ClInclude Include="Polygon3D.h">
       <Filter>ソース ファイル\Game\3D</Filter>
     </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>ソース ファイル\Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelShader.hlsl">
@@ -190,6 +196,9 @@
       <Filter>リソース ファイル\Shader\Vertex</Filter>
     </FxCompile>
     <FxCompile Include="Common.hlsl">
+      <Filter>リソース ファイル\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="GeometryShader.hlsl">
       <Filter>リソース ファイル\Shader</Filter>
     </FxCompile>
   </ItemGroup>
