@@ -50,9 +50,5 @@ void Polygon3D::Set(Wrapper::DirectX11 & dx, D3DXVECTOR3 Position, D3DXVECTOR3 R
 
 void Polygon3D::DrawPolygon(Wrapper::DirectX11 & dx)
 {
-	// プリミティブトポロジ設定
-	dx.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-
-	// ポリゴン描画
-	dx.GetDeviceContext()->Draw(4, 0);
+	
 }

@@ -62,7 +62,7 @@ void Manager::Draw()
 	
 	m_Scene->Draw();
 	m_Fade.Draw();
-	
+
 	light.Enable = false;
 	m_dx.SetLight(light);
 

@@ -165,6 +165,7 @@ void Wrapper::DirectX11::Init()
 	hBufferDesc.ByteWidth = sizeof(LIGHT);
 	m_Device->CreateBuffer(&hBufferDesc, NULL, &m_LightBuffer);
 	m_ImmediateContext->VSSetConstantBuffers(4, 1, &m_LightBuffer);
+	m_ImmediateContext->PSSetConstantBuffers(4, 1, &m_LightBuffer);
 
 	hBufferDesc.ByteWidth = sizeof(D3DXVECTOR4);
 	m_Device->CreateBuffer(&hBufferDesc, NULL, &m_CameraBuffer);

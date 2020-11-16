@@ -5,7 +5,6 @@
 #include "Camera.h"
 #include "Effect.h"
 #include "TestField.h"
-#include "field.h"
 
 void ChangeScene::ReturnTitle()
 {
@@ -31,16 +30,10 @@ void ChangeScene::TestMap2()
 	}
 }
 
-CField* g_Field;
-
 void Test::TestMap1::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
-	//AddGameObject<TestPlayer>(LAYER_3D);
-	//ddGameObject<TestField>(LAYER_3D);
-	//g_Camera.Init();
-	g_Field = new CField;
-	g_Field->Init();
+	AddGameObject<TestField>(LAYER_3D);
 }
 
 void Test::TestMap1::Uninit()
@@ -57,7 +50,6 @@ void Test::TestMap1::Update()
 void Test::TestMap1::Draw()
 {
 	Scene::Draw();
-	g_Field->Draw();
 }
 
 void Test::TestMap2::Init()

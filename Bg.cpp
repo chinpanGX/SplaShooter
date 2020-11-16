@@ -31,7 +31,7 @@ void Fade::Init()
 
 void Fade::Uninit()
 {
-	
+	m_Sprite.Uninit();
 }
 
 void Fade::Update()
@@ -44,6 +44,7 @@ void Fade::Update()
 		{
 			Manager::ChangeScene(m_NextScene);
 			m_FadeState = FADE_IN;
+			m_Alpha = 1.0f;
 		}
 		break;
 	case FADE_IN:
@@ -51,6 +52,7 @@ void Fade::Update()
 		if (m_Alpha < 0.0f)
 		{
 			m_FadeState = FADE_NONE;
+			m_Alpha = 0;
 		}
 		break;
 	}
@@ -58,7 +60,7 @@ void Fade::Update()
 
 void Fade::Draw()
 {
-	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::Texture::ID::FADE) ,Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Alpha));
+	m_Sprite.Draw(Engine::ObjectPool::GetTexture(Prefabs::Texture::ID::FADE), Bg::GetScrren() * 0.5f, Bg::GetScrren(), D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Alpha));
 }
 #pragma endregion Fade‚ÌŠÖ”’è‹`
 
