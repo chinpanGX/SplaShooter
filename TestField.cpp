@@ -30,6 +30,7 @@ void TestField::Init()
 	auto& dx = Wrapper::DirectX11::Instance();
 	Wrapper::VERTEX_3D vertex[4];
 	CreateVertex(vertex);
+<<<<<<< HEAD
 	
 	// 頂点バッファ生成
 	D3D11_BUFFER_DESC bd;
@@ -42,6 +43,21 @@ void TestField::Init()
 	ZeroMemory(&sd, sizeof(sd));
 	sd.pSysMem = vertex;
 	dx.GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer);
+=======
+	// ↓インスタンス生成
+	m_Object = new Object3D(dx,vertex);
+<<<<<<< HEAD
+	// シェーダーの読み込み
+	// ↓画面真っ暗の原因
+	m_Shader = new Shader("MappingVS.cso", "MappingPS.cso");
+	//m_Shader = new Shader("vertexShader.cso", "pixelShader.cso");
+
+	// テクスチャの読み込み
+	m_TextureStorge[1] = m_Texture[0].Load(dx, "Asset/Texture/field004.jpg");
+	m_TextureStorge[1] = m_Texture[1].Load(dx, "Asset/Texture/waffuru.tif");
+=======
+>>>>>>> bcb5fd99f6e41fd5d46d781c1365f287cbbef2e8
+>>>>>>> fb2c35c36d87e2c408284cf9a8be3192fd963e1a
 
 	m_Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
