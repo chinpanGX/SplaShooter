@@ -260,3 +260,7 @@ paket-files/
 __pycache__/
 *.pyc
 *.diagsession
+vertexShader.cso
+pixelShader.cso
+MappingPS.cso
+MappingVS.cso
