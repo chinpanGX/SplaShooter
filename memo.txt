@@ -39,3 +39,5 @@ https://blog.techlab-xe.net/directx12-gs-nearclip-technique/
 
 ジオメトリシェーダーの使い方
 http://marupeke296.com/DX10_No6_GeometryShader.html
+
+sturctのメンバ変数の宣言の順番はバイト数は大きいほうから順に並び替えるだけで無駄なメモリ領域が抑えられる

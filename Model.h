@@ -24,40 +24,40 @@ namespace StaticMesh
 	// マテリアル
 	struct Material
 	{
+		Wrapper::MATERIAL m_Material;
+		ID3D11ShaderResourceView* m_Texture;
 		char m_Name[256];
 		char m_TextureName[256];
-		ID3D11ShaderResourceView* m_Texture;
-		Wrapper::MATERIAL m_Material;
 	};
 
 	// 描画サブセット
 	struct Subset
 	{
+		Material m_Material;
 		unsigned __int32 m_StartIndex;
 		unsigned __int32 m_IndexNum;
-		Material m_Material;
 	};
 
 	// メッシュ
 	struct Mesh
 	{
+		Wrapper::VERTEX_3D* m_VertexArray;
+		Subset* m_SubsetArray;
 		unsigned __int32 m_VertexNum;
 		unsigned __int32* m_IndexArray;
 		unsigned __int32 m_IndexNum;
 		unsigned __int32 m_SubsetNum;
-		Subset* m_SubsetArray;
-		Wrapper::VERTEX_3D* m_VertexArray;
 	};
 
 	// モデル
 	class Model
 	{
 	private:
-		unsigned __int32 m_SubsetNum;
+		Wrapper::DirectX11& m_dx = Wrapper::DirectX11::Instance();
+		Subset* m_SubsetArray;
 		ID3D11Buffer* m_VertexBuffer;
 		ID3D11Buffer* m_IndexBuffer;
-		Subset* m_SubsetArray;
-		Wrapper::DirectX11& m_dx = Wrapper::DirectX11::Instance();
+		unsigned __int32 m_SubsetNum;
 
 		void LoadObject(const char* FileName, Mesh* Mesh);
 		void LoadMaterial(const char* FileName, Material** MaterialArray, unsigned __int32* MaterialNum);

@@ -90,9 +90,9 @@ namespace Wrapper
 	// 描画サブセット構造体
 	struct DX11_SUBSET
 	{
-		unsigned int	StartIndex;
-		unsigned int	IndexNum;
 		DX11_MODEL_MATERIAL	Material;
+		unsigned __int32	StartIndex;
+		unsigned __int32	IndexNum;
 	};
 
 	// ライト構造体
@@ -109,20 +109,20 @@ namespace Wrapper
 	class DirectX11
 	{
 	private:
-		ID3D11Device*				m_Device = NULL;
-		ID3D11DeviceContext*		m_ImmediateContext = NULL;
-		IDXGISwapChain*				m_SwapChain = NULL;
-		ID3D11RenderTargetView*		m_RenderTargetView = NULL;
-		ID3D11DepthStencilView*		m_DepthStencilView = NULL;
-		ID3D11Buffer*				m_WorldBuffer = NULL;
-		ID3D11Buffer*				m_ViewBuffer = NULL;
-		ID3D11Buffer*				m_ProjectionBuffer = NULL;
-		ID3D11Buffer*				m_MaterialBuffer = NULL;
-		ID3D11Buffer*				m_LightBuffer = NULL;
-		ID3D11Buffer*				m_CameraBuffer = NULL;
-		ID3D11Buffer*				m_ParameterBuffer = NULL;
-		ID3D11DepthStencilState*	m_DepthStateEnable = NULL;
-		ID3D11DepthStencilState*	m_DepthStateDisable = NULL;
+		ID3D11Device*				m_Device = nullptr;
+		ID3D11DeviceContext*		m_ImmediateContext = nullptr;
+		IDXGISwapChain*				m_SwapChain = nullptr;
+		ID3D11RenderTargetView*		m_RenderTargetView = nullptr;
+		ID3D11DepthStencilView*		m_DepthStencilView = nullptr;
+		ID3D11Buffer*				m_WorldBuffer = nullptr;
+		ID3D11Buffer*				m_ViewBuffer = nullptr;
+		ID3D11Buffer*				m_ProjectionBuffer = nullptr;
+		ID3D11Buffer*				m_MaterialBuffer = nullptr;
+		ID3D11Buffer*				m_LightBuffer = nullptr;
+		ID3D11Buffer*				m_CameraBuffer = nullptr;
+		ID3D11Buffer*				m_ParameterBuffer = nullptr;
+		ID3D11DepthStencilState*	m_DepthStateEnable = nullptr;
+		ID3D11DepthStencilState*	m_DepthStateDisable = nullptr;
 
 		// privateコンストラクタ
 		DirectX11() {}
