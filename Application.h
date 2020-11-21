@@ -30,7 +30,7 @@ private:
 public:
 	~Application() {};
 	static Application& Instance(); // インスタンス
-	bool Init(HINSTANCE hinstance); // 初期化	
+	void Init(HINSTANCE hinstance); // 初期化	
 	void AppRun();
 	SIZE GetWindowSize()const;
 	HWND Gethwnd()const;

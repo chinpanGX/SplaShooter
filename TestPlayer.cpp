@@ -5,7 +5,7 @@
 
 ----------------------------------------------------------*/
 #include "TestPlayer.h"
-
+#include "InputDevice.h"
 #include "AnimationModel.h"
 
 void TestPlayer::Init()
@@ -37,23 +37,23 @@ void TestPlayer::Update()
 
 	m_Model->Update("Idle", "Run", m_BlendRate, m_Frame);
 
-	//if (CInput::GetKeyPress('W'))
-	//{
-	//	m_BlendRate += 0.06f;
-	//	m_Position.x -= Forward.x * 0.1f;
-	//	m_Position.z -= Forward.z * 0.1f;
-	//}
-	//if (CInput::GetKeyPress('S'))
-	//{
-	//	m_BlendRate += 0.06f;
-	//	m_Position.x += Forward.x * 0.1f;
-	//	m_Position.z += Forward.z * 0.1f;
-	//}
+	if (KeyBoard::IsPress(DIK_W))
+	{
+		m_BlendRate += 0.06f;
+		m_Position.x -= Forward.x * 0.1f;
+		m_Position.z -= Forward.z * 0.1f;
+	}
+	if (KeyBoard::IsPress(DIK_S))
+	{
+		m_BlendRate += 0.06f;
+		m_Position.x += Forward.x * 0.1f;
+		m_Position.z += Forward.z * 0.1f;
+	}
 
-	//if (CInput::GetKeyPress('A'))
-	//	m_Rotation.y -= 0.03f;
-	//if (CInput::GetKeyPress('D'))
-	//	m_Rotation.y += 0.03f;
+	if (KeyBoard::IsPress(DIK_A))
+		m_Rotation.y -= 0.03f;
+	if (KeyBoard::IsPress(DIK_D))
+		m_Rotation.y += 0.03f;
 
 
 	if (m_BlendRate > 1.0f)

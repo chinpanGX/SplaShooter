@@ -22,6 +22,7 @@ namespace Test
 	inline void Run()
 	{
 		ChangeScene::TestMap1();
+		ChangeScene::TestMap2();
 	}
 
 	// テストシーン１

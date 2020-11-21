@@ -157,6 +157,7 @@
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Polygon3D.cpp" />
     <ClCompile Include="Prefabs.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Polygon3D.h" />
     <ClInclude Include="Prefabs.h" />
     <ClInclude Include="Renderer.h" />

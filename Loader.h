@@ -54,4 +54,7 @@ namespace Loader
 		void Unload();
 		ID3D11PixelShader* GetPixelShader()const;
 	};
+
+	// ƒ‚ƒfƒ‹
+
 }

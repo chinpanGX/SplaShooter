@@ -83,13 +83,11 @@ Application & Application::Instance()
 	return instance;
 }
 
-bool Application::Init(HINSTANCE hInstance)
+void Application::Init(HINSTANCE hInstance)
 {
 	auto result = CoInitializeEx(0, COINITBASE_MULTITHREADED);
 	CreateGameWindow(m_hwnd, m_WindowClass); // ゲームウィンドウ
 	InputDevice::Init(hInstance, m_hwnd);	 // コントローラの初期化
-	//Input::GetInstance().Init();
-	return true;
 }
 
 void Application::AppRun()

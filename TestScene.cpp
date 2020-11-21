@@ -54,16 +54,23 @@ void Test::TestMap1::Draw()
 
 void Test::TestMap2::Init()
 {
+	AddGameObject<Camera>(LAYER_CAMERA);
+	AddGameObject<TestPlayer>(LAYER_3D);
+	AddGameObject<TestField>(LAYER_3D);
 }
 
 void Test::TestMap2::Uninit()
 {
+	Scene::Uninit();
 }
 
 void Test::TestMap2::Update()
 {
+	Scene::Update();
+	ChangeScene::ReturnTitle();
 }
 
 void Test::TestMap2::Draw()
 {
+	Scene::Draw();
 }
