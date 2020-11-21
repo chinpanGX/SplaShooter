@@ -28,7 +28,7 @@ Polygon3D::~Polygon3D()
 	m_VertexBuffer = NULL;
 }
 
-void Polygon3D::Draw(Wrapper::DirectX11 & dx, D3DXVECTOR3 Position, D3DXVECTOR3 Rotation, D3DXVECTOR3 Scale)
+void Polygon3D::DrawPolygon(Wrapper::DirectX11 & dx, D3DXVECTOR3 Position, D3DXVECTOR3 Rotation, D3DXVECTOR3 Scale)
 {
 	// マトリクス設定
 	D3DXMATRIX world, scale, rot, trans;
@@ -46,10 +46,10 @@ void Polygon3D::Draw(Wrapper::DirectX11 & dx, D3DXVECTOR3 Position, D3DXVECTOR3 
 	ZeroMemory(&material, sizeof(material));
 	material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	dx.SetMaterial(material);
+
 	// プリミティブトポロジ設定
 	dx.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	// ポリゴン描画
 	dx.GetDeviceContext()->Draw(4, 0);
 }
-

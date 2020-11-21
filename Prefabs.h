@@ -5,7 +5,7 @@
 
 ------------------------------------------------------------*/
 #pragma once
-#include "GameObject.h"
+
 #include "Loader.h"
 
 #pragma region BaseClass_PrefabsBase

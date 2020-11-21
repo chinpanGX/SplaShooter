@@ -4,6 +4,8 @@
 	Author : o‡ãÄ‘¾
 
 ------------------------------------------------------------*/
+
+#include "GameObject.h"
 #include "Prefabs.h"
 
 const unsigned int PrefabsBase::m_Maxid;

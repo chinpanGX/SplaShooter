@@ -128,5 +128,7 @@ public:
 	virtual void OnReleaseD(){}
 	virtual void OnReleaseEnter(){}
 	virtual void OnReleaseSpace(){}
+
+	//InoutUpdate‚ğì‚Á‚Ä‚»‚Ì’†‚Éİ’è‚·‚é
 };
 
