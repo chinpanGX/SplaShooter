@@ -49,10 +49,10 @@ private:
 	std::vector<DEFORM_VERTEX>* m_DeformVertex;	 //変形後頂点データ
 	std::map<const std::string, BONE> m_Bone;	//ボーンデータ(名前で参照)
 public:
-	void Load(const char* FileName);
+	void Load(Wrapper::DirectX11& dx, const char* FileName);
 	void LoadAnimation(const char* FileName, const char* Name);
 	void Unload();
-	void Update(const char* AnimationName1, const char* AnimationName2, float BlendRate, int Frame);
-	void Draw();
+	void Update(Wrapper::DirectX11& dx, const char* AnimationName1, const char* AnimationName2, float BlendRate, int Frame);
+	void Draw(Wrapper::DirectX11& dx);
 };
 

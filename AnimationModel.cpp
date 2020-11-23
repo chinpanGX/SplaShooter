@@ -6,7 +6,7 @@
 ----------------------------------------------------------*/
 #include "AnimationModel.h"
 
-void AnimationModel::Load(const char* FileName)
+void AnimationModel::Load(Wrapper::DirectX11& dx, const char* FileName)
 {
 	const std::string modelPath(FileName);
 
@@ -52,7 +52,7 @@ void AnimationModel::Load(const char* FileName)
 			ZeroMemory(&sd, sizeof(sd));
 			sd.pSysMem = vertex;
 
-			Wrapper::DirectX11::Instance().GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer[m]);
+			dx.GetDevice()->CreateBuffer(&bd, &sd, &m_VertexBuffer[m]);
 
 			delete[] vertex;
 		}
@@ -84,7 +84,7 @@ void AnimationModel::Load(const char* FileName)
 			ZeroMemory(&sd, sizeof(sd));
 			sd.pSysMem = index;
 
-			Wrapper::DirectX11::Instance().GetDevice()->CreateBuffer(&bd, &sd, &m_IndexBuffer[m]);
+			dx.GetDevice()->CreateBuffer(&bd, &sd, &m_IndexBuffer[m]);
 
 			delete[] index;
 		}
@@ -145,7 +145,7 @@ void AnimationModel::Load(const char* FileName)
 						int id = atoi(&path.data[m]);
 
 						D3DX11CreateShaderResourceViewFromMemory(
-							Wrapper::DirectX11::Instance().GetDevice(),
+							dx.GetDevice(),
 							(const unsigned char*)m_Scene->mTextures[id]->pcData,
 							m_Scene->mTextures[id]->mWidth,
 							NULL,
@@ -200,7 +200,7 @@ void AnimationModel::Unload()
 	aiReleaseImport(m_Scene);
 }
 
-void AnimationModel::Update(const char* AnimationName1, const char* AnimationName2, float BlendRate, int Frame)
+void AnimationModel::Update(Wrapper::DirectX11& dx, const char* AnimationName1, const char* AnimationName2, float BlendRate, int Frame)
 {
 	//エラー処理
 	if (!m_Animation[AnimationName1]->HasAnimations())
@@ -248,7 +248,7 @@ void AnimationModel::Update(const char* AnimationName1, const char* AnimationNam
 		aiMesh* mesh = m_Scene->mMeshes[m];
 
 		D3D11_MAPPED_SUBRESOURCE ms;
-		Wrapper::DirectX11::Instance().GetDeviceContext()->Map(m_VertexBuffer[m], 0, D3D11_MAP_WRITE_DISCARD, 0, &ms);
+		dx.GetDeviceContext()->Map(m_VertexBuffer[m], 0, D3D11_MAP_WRITE_DISCARD, 0, &ms);
 
 		Wrapper::VERTEX_3D* vertex = (Wrapper::VERTEX_3D*)ms.pData;
 
@@ -374,21 +374,21 @@ void AnimationModel::Update(const char* AnimationName1, const char* AnimationNam
 
 			vertex[v].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
 		}
-		Wrapper::DirectX11::Instance().GetDeviceContext()->Unmap(m_VertexBuffer[m], 0);
+		dx.GetDeviceContext()->Unmap(m_VertexBuffer[m], 0);
 	}
 }
 
-void AnimationModel::Draw()
+void AnimationModel::Draw(Wrapper::DirectX11& dx)
 {
 	//プリミティブトポロジ設定
-	Wrapper::DirectX11::Instance().GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	dx.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	//マテリアル設定
 	Wrapper::MATERIAL material;
 	ZeroMemory(&material, sizeof(material));
 	material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	material.Ambient = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	Wrapper::DirectX11::Instance().SetMaterial(material);
+	dx.SetMaterial(material);
 
 	for (unsigned int m = 0; m < m_Scene->mNumMeshes; m++)
 	{
@@ -399,20 +399,20 @@ void AnimationModel::Draw()
 		//テクスチャ設定
 		aiString path;
 		material->GetTexture(aiTextureType_DIFFUSE, 0, &path);
-		Wrapper::DirectX11::Instance().GetDeviceContext()->PSSetShaderResources(0, 1, &m_Texture[path.data]);
+		dx.GetDeviceContext()->PSSetShaderResources(0, 1, &m_Texture[path.data]);
 
 		// 頂点バッファ設定
 		UINT stride = sizeof(Wrapper::VERTEX_3D);
 		UINT offset = 0;
-		Wrapper::DirectX11::Instance().GetDeviceContext()->IASetVertexBuffers(0, 1,
+		dx.GetDeviceContext()->IASetVertexBuffers(0, 1,
 			&m_VertexBuffer[m], &stride, &offset);
 
 		// インデックスバッファ設定
-		Wrapper::DirectX11::Instance().GetDeviceContext()->IASetIndexBuffer(
+		dx.GetDeviceContext()->IASetIndexBuffer(
 			m_IndexBuffer[m], DXGI_FORMAT_R32_UINT, 0);
 
 		// ポリゴン描画
-		Wrapper::DirectX11::Instance().GetDeviceContext()->DrawIndexed(
+		dx.GetDeviceContext()->DrawIndexed(
 			mesh->mNumFaces * 3, 0, 0);
 	}
 }

@@ -11,10 +11,10 @@
 void TestPlayer::Init()
 {
 	m_Model = new AnimationModel();
-	m_Model->Load("asset\\model\\Akai_Idle.fbx");
+	m_Model->Load(Wrapper::DirectX11::Instance(), "asset\\model\\Akai_Idle.fbx");
 	m_Model->LoadAnimation("asset\\model\\Akai_Idle.fbx", "Idle");
 	m_Model->LoadAnimation("asset\\model\\Akai_Run.fbx", "Run");
-	m_Frame = 0;
+	m_AnimFrame = 0;
 	m_BlendRate = 0.0f;
 
 	m_Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -24,18 +24,18 @@ void TestPlayer::Init()
 
 void TestPlayer::Uninit()
 {
-	m_Model->Unload();
-	delete m_Model;
+	/*m_Model->Unload();
+	delete m_Model;*/
 }
 
 void TestPlayer::Update()
 {
-	m_Frame++;
+	m_AnimFrame++;
 	m_BlendRate -= 0.03f;
 
 	D3DXVECTOR3 Forward = GetForward();
 
-	m_Model->Update("Idle", "Run", m_BlendRate, m_Frame);
+	m_Model->Update(Wrapper::DirectX11::Instance(), "Idle", "Run", m_BlendRate, m_AnimFrame);
 
 	if (KeyBoard::IsPress(DIK_W))
 	{
@@ -68,6 +68,7 @@ void TestPlayer::Update()
 
 void TestPlayer::Draw()
 {
+	Wrapper::DirectX11& dx = Wrapper::DirectX11::Instance();
 	//マトリクス設定
 	D3DXMATRIX world, scale, rot, trans;
 	D3DXMatrixScaling(&scale, m_Scale.x, m_Scale.y, m_Scale.z);
@@ -75,7 +76,7 @@ void TestPlayer::Draw()
 	D3DXMatrixTranslation(&trans, m_Position.x, m_Position.y, m_Position.z);
 	world = scale * rot * trans;
 
-	Wrapper::DirectX11::Instance().SetWorldMatrix(&world);
+	dx.SetWorldMatrix(&world);
 
-	m_Model->Draw();
+	m_Model->Draw(dx);
 }

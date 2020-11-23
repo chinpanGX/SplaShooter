@@ -57,5 +57,5 @@ void Test_Chinapan::Field::Draw()
 
 	Engine::ObjectPool::SetTexture(dx, 0, Prefabs::Texture::ID::FIELD);
 	Engine::ObjectPool::SetTexture(dx, 1, Prefabs::Texture::ID::WAFFURU);
-	m_Polygon->Draw(dx, m_Position, m_Rotation, m_Scale);
+	//m_Polygon->Draw(dx, m_Position, m_Rotation, m_Scale);
 }

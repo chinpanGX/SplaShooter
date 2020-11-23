@@ -10,6 +10,7 @@
 #pragma comment(lib, "shlwapi.lib")
 #include "Model.h"
 
+#pragma region StaticMesh_Model_Func
 // モデルの読み込み
 void StaticMesh::Model::LoadObject(const char * FileName, Mesh * Mesh)
 {
@@ -29,7 +30,7 @@ void StaticMesh::Model::LoadObject(const char * FileName, Mesh * Mesh)
 	unsigned __int32	in = 0;
 	unsigned __int32	subsetNum = 0;
 
-	Material	*materialArray = NULL;
+	Material	*materialArray = nullptr;
 	unsigned __int32	materialNum = 0;
 
 	char str[256];
@@ -101,9 +102,9 @@ void StaticMesh::Model::LoadObject(const char * FileName, Mesh * Mesh)
 	D3DXVECTOR3 *normal = normalArray;
 	D3DXVECTOR2 *texcoord = texcoordArray;
 
-	unsigned int vc = 0;
-	unsigned int ic = 0;
-	unsigned int sc = 0;
+	unsigned __int32 vc = 0;
+	unsigned __int32 ic = 0;
+	unsigned __int32 sc = 0;
 
 	fseek(file, 0, SEEK_SET);
 
@@ -167,8 +168,8 @@ void StaticMesh::Model::LoadObject(const char * FileName, Mesh * Mesh)
 
 			Mesh->m_SubsetArray[sc].m_StartIndex = ic;
 
-
-			for (unsigned int i = 0; i < materialNum; i++)
+			unsigned __int32 i = 0;
+			for (i; i < materialNum; i++)
 			{
 				if (strcmp(str, materialArray[i].m_Name) == 0)
 				{
@@ -195,10 +196,10 @@ void StaticMesh::Model::LoadObject(const char * FileName, Mesh * Mesh)
 				if (s[strlen(s) + 1] != '/')
 				{
 					//テクスチャ座標が存在しない場合もある
-					s = strtok(NULL, "/");
+					s = strtok(nullptr, "/");
 					Mesh->m_VertexArray[vc].TexCoord = texcoordArray[atoi(s) - 1];
 				}
-				s = strtok(NULL, "/");
+				s = strtok(nullptr, "/");
 				Mesh->m_VertexArray[vc].Normal = normalArray[atoi(s) - 1];
 				Mesh->m_VertexArray[vc].Diffuse = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
 				Mesh->m_IndexArray[ic] = vc;
@@ -239,7 +240,7 @@ void StaticMesh::Model::LoadMaterial(const char * FileName, Material ** Material
 	assert(file);
 
 	Material *materialArray;
-	unsigned int materialNum = 0;
+	unsigned __int32 materialNum = 0;
 
 	//要素数カウント
 	while (true)
@@ -328,7 +329,7 @@ void StaticMesh::Model::LoadMaterial(const char * FileName, Material ** Material
 }
 
 // ロード
-void StaticMesh::Model::Load(const char * FileName)
+void StaticMesh::Model::Load(Wrapper::DirectX11& dx, const char * FileName)
 {
 	Mesh mesh;
 	LoadObject(FileName, &mesh);
@@ -342,7 +343,7 @@ void StaticMesh::Model::Load(const char * FileName)
 	D3D11_SUBRESOURCE_DATA vsd;
 	ZeroMemory(&vsd, sizeof(vsd));
 	vsd.pSysMem = mesh.m_VertexArray;
-	m_dx.GetDevice()->CreateBuffer(&vbd, &vsd, &m_VertexBuffer);
+	dx.GetDevice()->CreateBuffer(&vbd, &vsd, &m_VertexBuffer);
 
 	// インデックスバッファ生成
 	D3D11_BUFFER_DESC ibd;
@@ -354,7 +355,7 @@ void StaticMesh::Model::Load(const char * FileName)
 	D3D11_SUBRESOURCE_DATA isd;
 	ZeroMemory(&isd, sizeof(isd));
 	isd.pSysMem = mesh.m_IndexArray;
-	m_dx.GetDevice()->CreateBuffer(&ibd, &isd, &m_IndexBuffer);
+	dx.GetDevice()->CreateBuffer(&ibd, &isd, &m_IndexBuffer);
 
 
 	// サブセット設定
@@ -366,9 +367,9 @@ void StaticMesh::Model::Load(const char * FileName)
 		m_SubsetArray[CountSubset].m_StartIndex = mesh.m_SubsetArray[CountSubset].m_StartIndex;
 		m_SubsetArray[CountSubset].m_IndexNum = mesh.m_SubsetArray[CountSubset].m_IndexNum;
 		m_SubsetArray[CountSubset].m_Material.m_Material = mesh.m_SubsetArray[CountSubset].m_Material.m_Material;
-		m_SubsetArray[CountSubset].m_Material.m_Texture = NULL;
-		D3DX11CreateShaderResourceViewFromFile(m_dx.GetDevice(), mesh.m_SubsetArray[CountSubset].m_Material.m_TextureName, NULL, NULL, &m_SubsetArray[i].m_Material.m_Texture, NULL);
-		assert(m_SubsetArray[i].m_Material.m_Texture);
+		m_SubsetArray[CountSubset].m_Material.m_Texture = nullptr;
+		D3DX11CreateShaderResourceViewFromFile(dx.GetDevice(), mesh.m_SubsetArray[CountSubset].m_Material.m_TextureName, nullptr, nullptr, &m_SubsetArray[CountSubset].m_Material.m_Texture, nullptr);
+		assert(m_SubsetArray[CountSubset].m_Material.m_Texture);
 	}
 	delete[] mesh.m_VertexArray;
 	delete[] mesh.m_IndexArray;
@@ -389,25 +390,26 @@ void StaticMesh::Model::Unload()
 }
 
 // 描画
-void StaticMesh::Model::Draw()
+void StaticMesh::Model::Draw(Wrapper::DirectX11& dx)
 {
 	// 頂点バッファの設定
 	UINT stride = sizeof(Wrapper::VERTEX_3D);
 	UINT offset = 0;
-	m_dx.GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
+	dx.GetDeviceContext()->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
 	// インデックスバッファの設定
-	m_dx.GetDeviceContext()->IASetIndexBuffer(m_IndexBuffer, DXGI_FORMAT_R32_UINT, 0);
+	dx.GetDeviceContext()->IASetIndexBuffer(m_IndexBuffer, DXGI_FORMAT_R32_UINT, 0);
 	// プリミティブポロジ設定
-	m_dx.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	dx.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	unsigned __int32 CountSubset = 0;
 	for (CountSubset; CountSubset < m_SubsetNum; CountSubset++)
 	{
 		// マテリアルの設定
-		m_dx.SetMaterial(m_SubsetArray[CountSubset].m_Material.m_Material);
+		dx.SetMaterial(m_SubsetArray[CountSubset].m_Material.m_Material);
 		// テクスチャの設定
-		m_dx.GetDeviceContext()->PSSetShaderResources(0, 1, &m_SubsetArray[CountSubset].m_Material.m_Texture);
+		dx.GetDeviceContext()->PSSetShaderResources(0, 1, &m_SubsetArray[CountSubset].m_Material.m_Texture);
 		// ポリゴン描画
-		m_dx.GetDeviceContext()->DrawIndexed(m_SubsetArray[CountSubset].m_IndexNum, m_SubsetArray[CountSubset].m_StartIndex, 0);
+		dx.GetDeviceContext()->DrawIndexed(m_SubsetArray[CountSubset].m_IndexNum, m_SubsetArray[CountSubset].m_StartIndex, 0);
 	}
 }
+#pragma endregion スタティックメッシュのモデルクラスの関数

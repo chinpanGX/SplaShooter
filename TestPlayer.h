@@ -1,14 +1,10 @@
 #pragma once
-#include "GameObject.h"
+#include "Actor.h"
 
-class TestPlayer : public GameObject
+class TestPlayer : public Actor
 {
 private:
 	class AnimationModel* m_Model;
-
-	int m_Frame;
-	float m_BlendRate;
-
 public:
 	TestPlayer() {}
 	~TestPlayer() {}
