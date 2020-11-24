@@ -5,19 +5,20 @@
 
 ------------------------------------------------------------*/
 #pragma once
-
 #include "Loader.h"
+#include "Model.h"
+#include "AnimationModel.h"
 
 #pragma region BaseClass_PrefabsBase
 class PrefabsBase
 {
 protected:
-	static const unsigned int m_Maxid = 256; // 配列の要素数
-	unsigned int m_Id[m_Maxid];	// IDの格納
-	int m_Size; // プレハブの数
+	static const unsigned __int32 m_Maxid = 256; // 配列の要素数
+	unsigned __int32 m_Id[m_Maxid];	// IDの格納
+	__int32 m_Size; // プレハブの数
 
 	//　生成
-	virtual void Create(int size) {}; // size = 作るプレハブの数
+	virtual void Create(unsigned __int32 size) {}; // size = 作るプレハブの数
 	//　破棄
 	virtual void Destory() {};
 public:
@@ -34,10 +35,10 @@ namespace Prefabs
 	{
 	private:
 		Loader::Texture* m_Texture;
-		void Create(int size)override; 
+		void Create(unsigned __int32 size)override;
 		void Destory()override;
 	public:
-		enum ID : int
+		enum ID : unsigned __int32
 		{
 			FADE,
 			TATILE_BG,
@@ -47,7 +48,7 @@ namespace Prefabs
 		};
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
-		ID3D11ShaderResourceView* GetTexture(unsigned int Id);
+		ID3D11ShaderResourceView* GetTexture(unsigned __int32 Id);
 	};
 
 	// 頂点シェーダー
@@ -55,18 +56,18 @@ namespace Prefabs
 	{
 	private:
 		Loader::VertexShader* m_VertexShader;
-		void Create(int size)override;
+		void Create(unsigned __int32 size)override;
 		void Destory()override;
 	public:
-		enum ID : int
+		enum ID : unsigned __int32
 		{
 			DEFAULT,
 			MAPPING,
 		};
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
-		ID3D11VertexShader* GetVertexShader(unsigned int Id);
-		ID3D11InputLayout* GetInputLayout(unsigned int Id);
+		ID3D11VertexShader* GetVertexShader(unsigned __int32 Id);
+		ID3D11InputLayout* GetInputLayout(unsigned __int32 Id);
 	};
 
 	// ピクセルシェーダー
@@ -74,17 +75,59 @@ namespace Prefabs
 	{
 	private:
 		Loader::PixelShader* m_PixelShader;
-		void Create(int size)override;
+		void Create(unsigned __int32 size)override;
 		void Destory();
 	public:
-		enum ID : int 
+		enum ID : unsigned __int32
 		{
 			DEFAULT,
 			MAPPING,
 		};
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
-		ID3D11PixelShader* GetPixelShader(unsigned int Id);
+		ID3D11PixelShader* GetPixelShader(unsigned __int32 Id);
+	};
+
+	// スタティックメッシュ
+	class StaticMesh : public PrefabsBase
+	{
+	private:
+		Loader::Model* m_StaticMesh;
+		void Create(unsigned __int32 size)override;
+		void Destory();
+	public:
+		enum ID : unsigned __int32
+		{
+
+		};
+		void Load(Wrapper::DirectX11& dx)override;
+		void Unload()override;
+		Loader::Model* GetModel(unsigned __int32 Id);
+	};
+
+	// スケルタルメッシュ
+	class SkeletalMesh : public PrefabsBase
+	{
+	private:
+		AnimationModel* m_SkeletalMesh;
+		void Create(unsigned __int32 size)override;
+		void Destory()override;
+		void LoadAnimation(unsigned __int32 AnimID, const char* FileName, const char* Name);
+	public:
+		enum ModelID : unsigned __int32
+		{
+
+		};
+
+		enum AnimID : unsigned __int32
+		{
+			
+		};
+
+		void Load(Wrapper::DirectX11& dx)override;
+		void Unload()override;
+		AnimationModel* GetModel(unsigned __int32 Id);
+		AnimationModel* GetAnimation(unsigned __int32 AnimId);
 	};
 }
 #pragma endregion Prefabsをまとめたもの

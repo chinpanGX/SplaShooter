@@ -10,9 +10,9 @@
 #pragma comment(lib, "shlwapi.lib")
 #include "Model.h"
 
-#pragma region StaticMesh_Model_Func
+#pragma region Loader_Model_Func
 // モデルの読み込み
-void StaticMesh::Model::LoadObject(const char * FileName, Mesh * Mesh)
+void Loader::Model::LoadObject(const char * FileName, Mesh * Mesh)
 {
 	char dir[MAX_PATH];
 	strcpy(dir, FileName);
@@ -229,7 +229,7 @@ void StaticMesh::Model::LoadObject(const char * FileName, Mesh * Mesh)
 	delete[] materialArray;
 }
 
-void StaticMesh::Model::LoadMaterial(const char * FileName, Material ** MaterialArray, unsigned __int32* MaterialNum)
+void Loader::Model::LoadMaterial(const char * FileName, Material ** MaterialArray, unsigned __int32* MaterialNum)
 {
 	char dir[MAX_PATH];
 	strcpy(dir, FileName);
@@ -329,7 +329,7 @@ void StaticMesh::Model::LoadMaterial(const char * FileName, Material ** Material
 }
 
 // ロード
-void StaticMesh::Model::Load(Wrapper::DirectX11& dx, const char * FileName)
+unsigned __int32 Loader::Model::Load(Wrapper::DirectX11& dx, const char * FileName)
 {
 	Mesh mesh;
 	LoadObject(FileName, &mesh);
@@ -377,7 +377,7 @@ void StaticMesh::Model::Load(Wrapper::DirectX11& dx, const char * FileName)
 }
 
 // アンロード
-void StaticMesh::Model::Unload()
+void Loader::Model::Unload()
 {
 	m_VertexBuffer->Release();
 	m_IndexBuffer->Release();
@@ -390,7 +390,7 @@ void StaticMesh::Model::Unload()
 }
 
 // 描画
-void StaticMesh::Model::Draw(Wrapper::DirectX11& dx)
+void Loader::Model::Draw(Wrapper::DirectX11& dx)
 {
 	// 頂点バッファの設定
 	UINT stride = sizeof(Wrapper::VERTEX_3D);

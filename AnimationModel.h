@@ -12,6 +12,7 @@
 #pragma comment (lib,"assimp.lib")
 
 #include "DirectX11.h"
+#include "Loader.h"
 
 struct DEFORM_VERTEX
 {

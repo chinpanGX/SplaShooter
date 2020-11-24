@@ -10,11 +10,9 @@
 
 #pragma region Loader_Texture_Func
 // ロード
-unsigned int Loader::Texture::Load(Wrapper::DirectX11& dx, std::string FileName)
+void Loader::Texture::Load(Wrapper::DirectX11& dx, std::string FileName)
 {
-	m_Count++;
 	D3DX11CreateShaderResourceViewFromFile(dx.GetDevice(), FileName.c_str(), NULL, NULL, &m_Texture, NULL);
-	return m_Count;
 }
 
 // アンロード
@@ -55,11 +53,9 @@ void Loader::VertexShader::CreateVertexShader(Wrapper::DirectX11 & dx, ID3D11Ver
 	delete[] buffer;
 }
 
-unsigned int Loader::VertexShader::Load(Wrapper::DirectX11 & dx, std::string VertexShader_FileName)
+void Loader::VertexShader::Load(Wrapper::DirectX11 & dx, std::string VertexShader_FileName)
 {
-	m_Count++;
 	CreateVertexShader(dx, &m_VertexShader, &m_InputLayout, VertexShader_FileName);
-	return m_Count;
 }
 
 
@@ -94,11 +90,9 @@ void Loader::PixelShader::CreatePixelShader(Wrapper::DirectX11 & dx, ID3D11Pixel
 	delete[] buffer;
 }
 
-unsigned int Loader::PixelShader::Load(Wrapper::DirectX11 & dx, std::string PixelShader_FileName)
+void Loader::PixelShader::Load(Wrapper::DirectX11 & dx, std::string PixelShader_FileName)
 {
-	m_Count++;
 	CreatePixelShader(dx, &m_PixelShader, PixelShader_FileName);
-	return m_Count;
 }
 
 void Loader::PixelShader::Unload()

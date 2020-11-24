@@ -6,41 +6,41 @@
 -----------------------------------------------*/
 #pragma once
 #include "DirectX11.h"
-// スタティックメッシュ
-namespace StaticMesh
+#include "Loader.h"
+
+namespace Loader
 {
-	// マテリアル
-	struct Material
-	{
-		Wrapper::MATERIAL m_Material;
-		ID3D11ShaderResourceView* m_Texture;
-		char m_Name[256];
-		char m_TextureName[256];
-	};
-
-	// 描画サブセット
-	struct Subset
-	{
-		Material m_Material;
-		unsigned __int32 m_StartIndex;
-		unsigned __int32 m_IndexNum;
-	};
-
-	// メッシュ
-	struct Mesh
-	{
-		Wrapper::VERTEX_3D* m_VertexArray;
-		Subset* m_SubsetArray;
-		unsigned __int32 m_VertexNum;
-		unsigned __int32* m_IndexArray;
-		unsigned __int32 m_IndexNum;
-		unsigned __int32 m_SubsetNum;
-	};
-
 	// モデル
 	class Model
 	{
 	private:
+		// マテリアル
+		struct Material
+		{
+			Wrapper::MATERIAL m_Material;
+			ID3D11ShaderResourceView* m_Texture;
+			char m_Name[256];
+			char m_TextureName[256];
+		};
+
+		// 描画サブセット
+		struct Subset
+		{
+			Material m_Material;
+			unsigned __int32 m_StartIndex;
+			unsigned __int32 m_IndexNum;
+		};
+
+		// メッシュ
+		struct Mesh
+		{
+			Wrapper::VERTEX_3D* m_VertexArray;
+			Subset* m_SubsetArray;
+			unsigned __int32 m_VertexNum;
+			unsigned __int32* m_IndexArray;
+			unsigned __int32 m_IndexNum;
+			unsigned __int32 m_SubsetNum;
+		};
 		Subset* m_SubsetArray;
 		ID3D11Buffer* m_VertexBuffer;
 		ID3D11Buffer* m_IndexBuffer;
