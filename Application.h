@@ -14,9 +14,6 @@ class Application
 private:
 	WNDCLASSEX	m_WindowClass;
 	HWND m_hwnd;
-	// ウィンドウサイズ
-	const unsigned int m_Width = 1920;
-	const unsigned int m_Height = 1080;
 	// ウィンドウモード true->WindowScrren false->FullScrren
 	bool m_WindowMode = false; 
 
@@ -28,6 +25,7 @@ private:
 	Application(const Application&) = delete;
 	void operator=(const Application&) = delete;
 public:
+	
 	~Application() {};
 	static Application& Instance(); // インスタンス
 	void Init(HINSTANCE hinstance); // 初期化	

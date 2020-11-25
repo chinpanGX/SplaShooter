@@ -10,6 +10,13 @@
 #include "Fps.h"
 #include "Input.h"
 
+// ウィンドウサイズ
+namespace
+{
+	const float s_WindowWidth = 1920;
+	const float s_WindowHeight = 1080;
+}
+
 #pragma region Application_Func
 // ウィンドウプロシージャ
 LRESULT WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -46,7 +53,7 @@ void Application::CreateGameWindow(HWND & hwnd, WNDCLASSEX & windowClass)
 		windowClass.lpszClassName = "Dx11";			// アプリケーション名
 		windowClass.hInstance = GetModuleHandle(0);	// ハンドルの指定
 		RegisterClassEx(&windowClass);				// アプリケーションクラス
-		RECT wrc = { 0,0,m_Width, m_Height };
+		RECT wrc = { 0,0,s_WindowWidth, s_WindowHeight };
 		AdjustWindowRect(&wrc, WS_OVERLAPPEDWINDOW, false);
 		// ウィンドウオブジェクトの生成
 		hwnd = CreateWindow(windowClass.lpszClassName,	// クラス名
@@ -65,7 +72,7 @@ void Application::CreateGameWindow(HWND & hwnd, WNDCLASSEX & windowClass)
 		windowClass.lpszClassName = "Dx11";			// アプリケーション名
 		windowClass.hInstance = GetModuleHandle(0);	// ハンドルの指定
 		RegisterClassEx(&windowClass);				// アプリケーションクラス
-		RECT wrc = { 0,0,m_Width, m_Height };
+		RECT wrc = { 0,0,s_WindowWidth, s_WindowHeight };
 		AdjustWindowRect(&wrc, WS_CAPTION, false);
 		// ウィンドウオブジェクトの生成
 		hwnd = CreateWindow(windowClass.lpszClassName,	// クラス名
@@ -141,8 +148,8 @@ void Application::AppRun()
 SIZE Application::GetWindowSize() const
 {
 	SIZE ret;
-	ret.cx = m_Width;
-	ret.cy = m_Height;
+	ret.cx = s_WindowWidth;
+	ret.cy = s_WindowHeight;
 	return ret;
 }
 

@@ -6,7 +6,7 @@
 ----------------------------------------------------------*/
 #include "AnimationModel.h"
 
-unsigned AnimationModel::Load(Wrapper::DirectX11& dx, const char* FileName)
+void AnimationModel::Load(Wrapper::DirectX11& dx, const char* FileName)
 {
 	const std::string modelPath(FileName);
 
@@ -170,7 +170,7 @@ unsigned AnimationModel::Load(Wrapper::DirectX11& dx, const char* FileName)
 	}
 }
 
-unsigned AnimationModel::LoadAnimation(const char* FileName, const char* Name)
+void AnimationModel::LoadAnimation(const char* FileName, const char* Name)
 {
 	m_Animation[Name] = aiImportFile(FileName, aiProcess_ConvertToLeftHanded);
 	assert(m_Animation[Name]);

@@ -329,7 +329,7 @@ void Loader::Model::LoadMaterial(const char * FileName, Material ** MaterialArra
 }
 
 // ÉçÅ[Éh
-unsigned __int32 Loader::Model::Load(Wrapper::DirectX11& dx, const char * FileName)
+void Loader::Model::Load(Wrapper::DirectX11& dx, const char * FileName)
 {
 	Mesh mesh;
 	LoadObject(FileName, &mesh);
