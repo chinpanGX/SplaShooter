@@ -4,7 +4,7 @@
 class TestPlayer : public Actor
 {
 private:
-	class AnimationModel* m_Model;
+	//class AnimationModel* m_Model;
 public:
 	TestPlayer() {}
 	~TestPlayer() {}

@@ -165,15 +165,12 @@ void Prefabs::SkeletalMesh::Destory()
 	delete[] m_SkeletalMesh;
 }
 
-void Prefabs::SkeletalMesh::LoadAnimation(unsigned __int32 AnimID, const char * FileName, const char * Name)
-{
-
-}
-
 void Prefabs::SkeletalMesh::Load(Wrapper::DirectX11 & dx)
 {
 	Create(1);
 	m_SkeletalMesh[0].Load(dx, "asset\\model\\Akai_Idle.fbx");
+	m_SkeletalMesh[0].LoadAnimation("asset\\model\\Akai_Idle.fbx", "Idle");
+	m_SkeletalMesh[0].LoadAnimation("asset\\model\\Akai_Run.fbx", "Run");
 }
 
 void Prefabs::SkeletalMesh::Unload()
@@ -189,9 +186,4 @@ void Prefabs::SkeletalMesh::Unload()
 AnimationModel * Prefabs::SkeletalMesh::GetModel(unsigned __int32 Id)
 {
 	return &m_SkeletalMesh[Id];
-}
-
-AnimationModel * Prefabs::SkeletalMesh::GetAnimation(unsigned __int32 AnimId)
-{
-	return GetModel(AnimId);
 }

@@ -112,22 +112,14 @@ namespace Prefabs
 		AnimationModel* m_SkeletalMesh;
 		void Create(unsigned __int32 size)override;
 		void Destory()override;
-		void LoadAnimation(unsigned __int32 AnimID, const char* FileName, const char* Name);
 	public:
 		enum ModelID : unsigned __int32
 		{
-
+			Akai,
 		};
-
-		enum AnimID : unsigned __int32
-		{
-			
-		};
-
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
 		AnimationModel* GetModel(unsigned __int32 Id);
-		AnimationModel* GetAnimation(unsigned __int32 AnimId);
 	};
 }
 #pragma endregion Prefabs‚ð‚Ü‚Æ‚ß‚½‚à‚Ì
