@@ -41,7 +41,9 @@ void TestPlayer::Update()
 
 	D3DXVECTOR3 Forward = GetForward();
 
-	Engine::ObjectPool::SkeletalMeshUpdate(s_dx, Prefabs::SkeletalMesh::ModelID::Akai, "Idle", "Run", m_BlendRate, m_AnimFrame);
+	Engine::ObjectPool::Update(s_dx, Prefabs::Model::ID::Akai, "Idle", "Run", m_BlendRate, m_AnimFrame);
+	//Engine::ObjectPool::Update(s_dx, Prefabs::Model::ID::Unitychan, "Idle", "Run", m_BlendRate, m_AnimFrame);
+
 
 	if (KeyBoard::IsPress(DIK_W))
 	{
@@ -82,6 +84,7 @@ void TestPlayer::Draw()
 	world = scale * rot * trans;
 
 	s_dx.SetWorldMatrix(&world);
-	Engine::ObjectPool::SkeletalMeshDraw(s_dx,Prefabs::SkeletalMesh::ModelID::Akai);
+	Engine::ObjectPool::Draw(s_dx,Prefabs::Model::ID::Akai);
+	//Engine::ObjectPool::Draw(s_dx, Prefabs::Model::ID::Unitychan);
 	
 }

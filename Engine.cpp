@@ -10,8 +10,7 @@
 Prefabs::Texture* Engine::ObjectPool::m_Texture;
 Prefabs::VertexShader* Engine::ObjectPool::m_VertexShader;
 Prefabs::PixelShader* Engine::ObjectPool::m_PixelShader;
-Prefabs::StaticMesh* Engine::ObjectPool::m_StaticMesh;
-Prefabs::SkeletalMesh* Engine::ObjectPool::m_SkeletalMesh;
+Prefabs::Model* Engine::ObjectPool::m_Model;
 
 void Engine::ObjectPool::Init()
 {
@@ -22,18 +21,14 @@ void Engine::ObjectPool::Init()
 	m_VertexShader->Load(dx);
 	m_PixelShader = new Prefabs::PixelShader();
 	m_PixelShader->Load(dx);
-	m_StaticMesh = new Prefabs::StaticMesh();
-	m_StaticMesh->Load(dx);
-	m_SkeletalMesh = new Prefabs::SkeletalMesh();
-	m_SkeletalMesh->Load(dx);
+	m_Model = new Prefabs::Model();
+	m_Model->Load(dx);
 }
 
 void Engine::ObjectPool::Uninit()
 {
-	m_SkeletalMesh->Unload();
-	delete m_SkeletalMesh;
-	m_StaticMesh->Unload();
-	delete m_StaticMesh;
+	m_Model->Unload();
+	delete m_Model;
 	m_PixelShader->Unload();
 	delete m_PixelShader;
 	m_VertexShader->Unload();
@@ -42,14 +37,14 @@ void Engine::ObjectPool::Uninit()
 	delete m_Texture;
 }
 
-void Engine::ObjectPool::SkeletalMeshUpdate(Wrapper::DirectX11 & dx, unsigned __int32 Id, const char * AnimationName1, const char * AnimationName2, float BlendRate, int Frame)
+void Engine::ObjectPool::Update(Wrapper::DirectX11 & dx, unsigned __int32 Id, const char * AnimationName1, const char * AnimationName2, float BlendRate, int Frame)
 {
-	m_SkeletalMesh->GetModel(Id)->Update(dx, AnimationName1, AnimationName2, BlendRate, Frame);
+	m_Model->GetModel(Id)->Update(dx, AnimationName1, AnimationName2, BlendRate, Frame);
 }
 
-void Engine::ObjectPool::SkeletalMeshDraw(Wrapper::DirectX11 & dx, unsigned __int32 Id)
+void Engine::ObjectPool::Draw(Wrapper::DirectX11 & dx, unsigned __int32 Id)
 {
-	m_SkeletalMesh ->GetModel(Id)->Draw(dx);
+	m_Model ->GetModel(Id)->Draw(dx);
 }
 
 ID3D11ShaderResourceView * Engine::ObjectPool::GetTexture(unsigned int Id)

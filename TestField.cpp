@@ -2,6 +2,11 @@
 #include "Polygon3D.h"
 #include "Engine.h"
 
+namespace
+{
+	auto& s_dx = Wrapper::DirectX11::Instance();
+}
+
 void TestField::CreateVertex(Wrapper::VERTEX_3D Vertex[4])
 {
 	Vertex[0].Position = D3DXVECTOR3(-10.0f, 0.0f, 10.0f);
@@ -27,12 +32,11 @@ void TestField::CreateVertex(Wrapper::VERTEX_3D Vertex[4])
 
 void TestField::Init()
 {
-	auto& dx = Wrapper::DirectX11::Instance();
 	Wrapper::VERTEX_3D vertex[4];
 	CreateVertex(vertex);
 
 	// ↓インスタンス生成
-	m_Polygon = new Polygon3D(dx,vertex);
+	m_Polygon = new Polygon3D(s_dx,vertex);
 
 	m_Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_Rotation = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -50,13 +54,29 @@ void TestField::Update()
 
 void TestField::Draw()
 {
-	auto & dx = Wrapper::DirectX11::Instance();
-	Engine::ObjectPool::SetInputLayout(dx, Prefabs::VertexShader::MAPPING);
-	Engine::ObjectPool::SetVertexShader(dx, Prefabs::VertexShader::MAPPING);
-	Engine::ObjectPool::SetPixelShader(dx, Prefabs::PixelShader::MAPPING);
+	Engine::ObjectPool::SetInputLayout(s_dx, Prefabs::VertexShader::MAPPING);
+	Engine::ObjectPool::SetVertexShader(s_dx, Prefabs::VertexShader::MAPPING);
+	Engine::ObjectPool::SetPixelShader(s_dx, Prefabs::PixelShader::MAPPING);
 
-	Engine::ObjectPool::SetTexture(dx, 0, Prefabs::Texture::ID::FIELD);
-	Engine::ObjectPool::SetTexture(dx, 1, Prefabs::Texture::ID::WAFFURU);
+	Engine::ObjectPool::SetTexture(s_dx, 0, Prefabs::Texture::ID::FIELD);
+	Engine::ObjectPool::SetTexture(s_dx, 1, Prefabs::Texture::ID::WAFFURU);
 	
-	m_Polygon->DrawPolygon(dx, m_Position, m_Rotation, m_Scale);
+	m_Polygon->DrawPolygon(s_dx, m_Position, m_Rotation, m_Scale);
+}
+
+void TestFiled2::Init()
+{
+}
+
+void TestFiled2::Uninit()
+{
+}
+
+void TestFiled2::Update()
+{
+}
+
+void TestFiled2::Draw()
+{
+	//Engine::ObjectPool::StaticMeshDraw(s_dx, Prefabs::StaticMesh::ID::STAGE);
 }

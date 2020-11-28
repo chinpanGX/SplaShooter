@@ -13,14 +13,8 @@
 class PrefabsBase
 {
 protected:
-	static const unsigned __int32 m_Maxid = 256; // 配列の要素数
-	unsigned __int32 m_Id[m_Maxid];	// IDの格納
 	__int32 m_Size; // プレハブの数
 
-	//　生成
-	virtual void Create(unsigned __int32 size) {}; // size = 作るプレハブの数
-	//　破棄
-	virtual void Destory() {};
 public:
 	virtual void Load(Wrapper::DirectX11& dx) = 0;
 	virtual void Unload() = 0;
@@ -35,8 +29,6 @@ namespace Prefabs
 	{
 	private:
 		Loader::Texture* m_Texture;
-		void Create(unsigned __int32 size)override;
-		void Destory()override;
 	public:
 		enum ID : unsigned __int32
 		{
@@ -45,7 +37,9 @@ namespace Prefabs
 			GAME_BG,
 			FIELD,
 			WAFFURU,
+			MAX
 		};
+		Texture() { m_Size = ID::MAX; }
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
 		ID3D11ShaderResourceView* GetTexture(unsigned __int32 Id);
@@ -56,14 +50,14 @@ namespace Prefabs
 	{
 	private:
 		Loader::VertexShader* m_VertexShader;
-		void Create(unsigned __int32 size)override;
-		void Destory()override;
 	public:
 		enum ID : unsigned __int32
 		{
 			DEFAULT,
 			MAPPING,
+			MAX
 		};
+		VertexShader() { m_Size = ID::MAX; }
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
 		ID3D11VertexShader* GetVertexShader(unsigned __int32 Id);
@@ -75,48 +69,32 @@ namespace Prefabs
 	{
 	private:
 		Loader::PixelShader* m_PixelShader;
-		void Create(unsigned __int32 size)override;
-		void Destory();
 	public:
 		enum ID : unsigned __int32
 		{
 			DEFAULT,
 			MAPPING,
+			MAX
 		};
+		PixelShader() { m_Size = ID::MAX; }
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
 		ID3D11PixelShader* GetPixelShader(unsigned __int32 Id);
 	};
 
-	// スタティックメッシュ
-	class StaticMesh : public PrefabsBase
+	// スケルタルメッシュ
+	class Model : public PrefabsBase
 	{
 	private:
-		Loader::Model* m_StaticMesh;
-		void Create(unsigned __int32 size)override;
-		void Destory();
+		AnimationModel* m_Model;
 	public:
 		enum ID : unsigned __int32
 		{
-
-		};
-		void Load(Wrapper::DirectX11& dx)override;
-		void Unload()override;
-		Loader::Model* GetModel(unsigned __int32 Id);
-	};
-
-	// スケルタルメッシュ
-	class SkeletalMesh : public PrefabsBase
-	{
-	private:
-		AnimationModel* m_SkeletalMesh;
-		void Create(unsigned __int32 size)override;
-		void Destory()override;
-	public:
-		enum ModelID : unsigned __int32
-		{
 			Akai,
+			//Unitychan,
+			MAX
 		};
+		Model() { m_Size = ID::MAX; }
 		void Load(Wrapper::DirectX11& dx)override;
 		void Unload()override;
 		AnimationModel* GetModel(unsigned __int32 Id);
