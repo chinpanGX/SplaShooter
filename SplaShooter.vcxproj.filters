@@ -122,6 +122,12 @@
     <ClCompile Include="Loader.cpp">
       <Filter>ソース ファイル\Game\Engine\Loader</Filter>
     </ClCompile>
+    <ClCompile Include="TInput.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryFile.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Effect.h">
@@ -194,6 +200,11 @@
     <ClInclude Include="Loader.h">
       <Filter>ソース ファイル\Game\Engine\Loader</Filter>
     </ClInclude>
+    <ClInclude Include="TInput.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="BinaryFile.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="pixelShader.hlsl">
@@ -217,5 +228,8 @@
     <FxCompile Include="Common.hlsl">
       <Filter>リソース ファイル\Shader</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SplaShooter.sln" />
   </ItemGroup>
 </Project>

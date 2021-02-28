@@ -9,6 +9,7 @@
 #include "Manager.h"
 #include "Fps.h"
 #include "Input.h"
+#include "TInput.h"
 
 // ウィンドウサイズ
 namespace
@@ -93,8 +94,10 @@ Application & Application::Instance()
 void Application::Init(HINSTANCE hInstance)
 {
 	auto result = CoInitializeEx(0, COINITBASE_MULTITHREADED);
+	//DxLib_Init();
 	CreateGameWindow(m_hwnd, m_WindowClass); // ゲームウィンドウ
 	InputDevice::Init(hInstance, m_hwnd);	 // コントローラの初期化
+	
 }
 
 void Application::AppRun()
@@ -129,7 +132,6 @@ void Application::AppRun()
 		{
 			if(fps.Update())
 			{
-				// 更新処理
 				InputDevice::Update(); // コントローラの更新
 				Manager::Update();
 				// 描画処理
@@ -138,10 +140,12 @@ void Application::AppRun()
 		}
 	}
 
+	
 	Manager::Uninit();
 	fps.Uninit();
 	InputDevice::Uninit();  // コントローラの終了処理 
 	timeEndPeriod(1);		// 分解能を戻す
+	//DxLib_End();
 	UnregisterClass(m_WindowClass.lpszClassName, m_WindowClass.hInstance); // ウィンドウクラスの登録を解除
 }
 

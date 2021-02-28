@@ -38,7 +38,7 @@ bool InputDevice::Init(HINSTANCE hInstance, HWND hWnd)
 	//	入力デバイスの初期化
 	KeyBoard::Init(hInstance, hWnd);
 	GamePad::Init(hInstance, hWnd);
-	Mouse::Init(hInstance, hWnd, false);
+	Mouse::Init(hInstance, hWnd, true);
 	return true;
 }
 

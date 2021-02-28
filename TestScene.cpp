@@ -33,7 +33,7 @@ void ChangeScene::TestMap2()
 void Test::TestMap1::Init()
 {
 	AddGameObject<Camera>(LAYER_CAMERA);
-	AddGameObject<TestField>(LAYER_3D);
+	AddGameObject<TestField>(layer::LAYER_3D);
 }
 
 void Test::TestMap1::Uninit()

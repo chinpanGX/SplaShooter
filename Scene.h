@@ -49,25 +49,12 @@ public:
 	// XVˆ—
 	virtual void Update()
 	{
-		for (GameObject* object : m_GameObject[LAYER_CAMERA])
+		for (int i = 0; i < 5; i++)
 		{
-			object->Update();
-		}
-		for (GameObject* object : m_GameObject[LAYER_3D])
-		{
-			object->Update();
-		}
-		for (GameObject* object : m_GameObject[LAYER_2D_BG])
-		{
-			object->Update();
-		}
-		for (GameObject* object : m_GameObject[LAYER_2D_EFFECT])
-		{
-			object->Update();
-		}
-		for (GameObject* object : m_GameObject[LAYER_2D_UI])
-		{
-			object->Update();
+			for (GameObject* object : m_GameObject[i])
+			{
+				object->Update();
+			}
 		}
 		for (int i = 0; i < LAYER_MAX; i++)
 		{
