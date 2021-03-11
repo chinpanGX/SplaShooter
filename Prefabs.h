@@ -91,7 +91,7 @@ namespace Prefabs
 		enum ID : unsigned __int32
 		{
 			Akai,
-			//Unitychan,
+			Unitychan,
 			MAX
 		};
 		Model() { m_Size = ID::MAX; }

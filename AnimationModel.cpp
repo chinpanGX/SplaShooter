@@ -380,41 +380,7 @@ void AnimationModel::Update(Wrapper::DirectX11& dx, const char* AnimationName1, 
 
 void AnimationModel::Draw(Wrapper::DirectX11& dx)
 {
-	//プリミティブトポロジ設定
-	dx.GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
-	//マテリアル設定
-	Wrapper::MATERIAL material;
-	ZeroMemory(&material, sizeof(material));
-	material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	material.Ambient = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	dx.SetMaterial(material);
-
-	for (unsigned int m = 0; m < m_Scene->mNumMeshes; m++)
-	{
-		aiMesh* mesh = m_Scene->mMeshes[m];
-
-		aiMaterial* material = m_Scene->mMaterials[mesh->mMaterialIndex];
-
-		//テクスチャ設定
-		aiString path;
-		material->GetTexture(aiTextureType_DIFFUSE, 0, &path);
-		dx.GetDeviceContext()->PSSetShaderResources(0, 1, &m_Texture[path.data]);
-
-		// 頂点バッファ設定
-		UINT stride = sizeof(Wrapper::VERTEX_3D);
-		UINT offset = 0;
-		dx.GetDeviceContext()->IASetVertexBuffers(0, 1,
-			&m_VertexBuffer[m], &stride, &offset);
-
-		// インデックスバッファ設定
-		dx.GetDeviceContext()->IASetIndexBuffer(
-			m_IndexBuffer[m], DXGI_FORMAT_R32_UINT, 0);
-
-		// ポリゴン描画
-		dx.GetDeviceContext()->DrawIndexed(
-			mesh->mNumFaces * 3, 0, 0);
-	}
+	
 }
 
 

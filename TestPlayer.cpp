@@ -16,10 +16,13 @@ namespace
 
 void TestPlayer::Init()
 {
-	/*m_Model = new AnimationModel();
-	m_Model->Load(Wrapper::DirectX11::Instance(), "asset\\model\\Akai_Idle.fbx");
-	m_Model->LoadAnimation("asset\\model\\Akai_Idle.fbx", "Idle");
-	m_Model->LoadAnimation("asset\\model\\Akai_Run.fbx", "Run");*/
+	m_Model = new AnimationModel();
+	//m_Model->Load(Wrapper::DirectX11::Instance(), "asset\\model\\Akai_Idle.fbx");
+	m_Model->Load(Wrapper::DirectX11::Instance(), "Asset\\Model\\WAIT00.fbx");
+	//m_Model->LoadAnimation("asset\\model\\Akai_Idle.fbx", "Idle");
+	//m_Model->LoadAnimation("asset\\model\\Akai_Run.fbx", "Run");
+	m_Model->LoadAnimation("Asset\\Model\\unitychan_WAIT00.fbx", "Idle");
+	m_Model->LoadAnimation("Asset\\Model\\unitychan_RUN00_F.fbx", "Run");
 	m_AnimFrame = 0;
 	m_BlendRate = 0.0f;
 
@@ -30,8 +33,8 @@ void TestPlayer::Init()
 
 void TestPlayer::Uninit()
 {
-	/*m_Model->Unload();
-	delete m_Model;*/
+	m_Model->Unload();
+	delete m_Model;
 }
 
 void TestPlayer::Update()
@@ -41,8 +44,9 @@ void TestPlayer::Update()
 
 	D3DXVECTOR3 Forward = GetForward();
 
-	Engine::ObjectPool::Update(s_dx, Prefabs::Model::ID::Akai, "Idle", "Run", m_BlendRate, m_AnimFrame);
+	//Engine::ObjectPool::Update(s_dx, Prefabs::Model::ID::Akai, "Idle", "Run", m_BlendRate, m_AnimFrame);
 	//Engine::ObjectPool::Update(s_dx, Prefabs::Model::ID::Unitychan, "Idle", "Run", m_BlendRate, m_AnimFrame);
+	m_Model->Update(s_dx, "Idle", "Run", m_BlendRate, m_AnimFrame);
 
 
 	if (KeyBoard::IsPress(DIK_W))
@@ -84,7 +88,8 @@ void TestPlayer::Draw()
 	world = scale * rot * trans;
 
 	s_dx.SetWorldMatrix(&world);
-	Engine::ObjectPool::Draw(s_dx,Prefabs::Model::ID::Akai);
+	//Engine::ObjectPool::Draw(s_dx,Prefabs::Model::ID::Akai);
 	//Engine::ObjectPool::Draw(s_dx, Prefabs::Model::ID::Unitychan);
+	m_Model->Draw(s_dx);
 	
 }

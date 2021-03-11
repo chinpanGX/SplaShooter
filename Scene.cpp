@@ -12,7 +12,6 @@
 #include "Camera.h"
 #include "TestScene.h"
 #include "TestField.h"
-#include "TInput.h"
 
 
 // タイトルシーン

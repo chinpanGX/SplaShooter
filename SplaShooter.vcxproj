@@ -151,7 +151,6 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Bg.cpp" />
-    <ClCompile Include="BinaryFile.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DirectX11.cpp" />
     <ClCompile Include="Effect.cpp" />
@@ -171,14 +170,12 @@
     <ClCompile Include="TestField.cpp" />
     <ClCompile Include="TestPlayer.cpp" />
     <ClCompile Include="TestScene.cpp" />
-    <ClCompile Include="TInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationModel.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Bg.h" />
-    <ClInclude Include="BinaryFile.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DirectX11.h" />
     <ClInclude Include="Effect.h" />
@@ -200,7 +197,6 @@
     <ClInclude Include="TestField.h" />
     <ClInclude Include="TestPlayer.h" />
     <ClInclude Include="TestScene.h" />
-    <ClInclude Include="TInput.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Common.hlsl">

@@ -89,12 +89,12 @@ ID3D11PixelShader * Prefabs::PixelShader::GetPixelShader(unsigned __int32 Id)
 void Prefabs::Model::Load(Wrapper::DirectX11 & dx)
 {
 	m_Model = new AnimationModel[m_Size];
-	m_Model[0].Load(dx, "asset\\model\\Akai_Idle.fbx");
-	m_Model[0].LoadAnimation("asset\\model\\Akai_Idle.fbx", "Idle");
-	m_Model[0].LoadAnimation("asset\\model\\Akai_Run.fbx", "Run");
-	//m_Model[1].Load(dx, "asset\\model\\unitychan.fbx");
-	//m_Model[1].LoadAnimation("asset\\model\\unitychan_WAIT00.fbx","Idle");
-	//m_Model[1].LoadAnimation("asset\\model\\unitychan_RUN00_F.fbx", "Run");
+	//m_Model[0].Load(dx, "asset\\model\\Akai_Idle.fbx");
+	//m_Model[0].LoadAnimation("asset\\model\\Akai_Idle.fbx", "Idle");
+	//m_Model[0].LoadAnimation("asset\\model\\Akai_Run.fbx", "Run");
+	m_Model[1].Load(dx, "asset\\model\\unitychan_WAIT00.fbx");
+	m_Model[1].LoadAnimation("asset\\model\\unitychan_WAIT00.fbx","Idle");
+	m_Model[1].LoadAnimation("asset\\model\\unitychan_RUN00_F.fbx", "Run");
 }
 
 void Prefabs::Model::Unload()

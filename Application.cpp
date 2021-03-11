@@ -9,7 +9,6 @@
 #include "Manager.h"
 #include "Fps.h"
 #include "Input.h"
-#include "TInput.h"
 
 // ウィンドウサイズ
 namespace
